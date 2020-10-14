@@ -1,8 +1,4 @@
 const index = () => {
-    return (
-        <div>
-        homepage
-    </div> );
-}
- 
+  return <div>homepage</div>;
+};
 export default index;
