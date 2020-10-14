@@ -1,7 +1,7 @@
 import ProfileInfo from "../components/profile/ProfileInfo.component";
 import ProfileEdit from "../components/profile/ProfileEdit.component";
 
-class Profile extends Component {
+class Profile extends React.Component {
   state = { profileOption: "selection" };
   render() {
     return (
