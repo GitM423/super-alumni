@@ -181,13 +181,127 @@ const index = () => {
         html {
           scroll-behavior: smooth;
         }
-        p {
-          font-size: 20px;
-        }
         * {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
+        }
+        .btn {
+          font-family: "neue-machina-regular", sans-serif;
+          padding: 10px 40px;
+          display: inline-block;
+          text-decoration: none;
+          text-align: center;
+          transition: top 0.5s linear 0s, box-shadow 0.5s linear 0s, left 0.5s linear 0s;
+          min-width: 200px;
+          letter-spacing: 1px;
+          cursor: pointer;
+        }
+        .contact-btn {
+          width: 100px;
+          border: 4px solid white;
+          background: none;
+          color: white;
+          text-transform: uppercase;
+        }
+        .contact-btn:hover {
+          box-shadow: white -5px 5px 0px 0px;
+          top: -5px;
+          left: 5px;
+        }
+        .btn-black {
+          background: #000000;
+          color: #3dd7ac;
+          border: 3px solid #3dd7ac;
+          text-transform: uppercase;
+        }
+        .btn-black:hover {
+          box-shadow: #3dd7ac -5px 5px 0px 0px;
+          top: -5px;
+          left: 5px;
+        }
+        .btn-green {
+          background: #3dd7ac;
+          color: white;
+          border: 3px solid #000000;
+          text-transform: uppercase;
+        }
+        .btn-green:hover {
+          box-shadow: #000000 -5px 5px 0px 0px;
+          top: -5px;
+          left: 5px;
+        }
+        .btn-purple {
+          background: #5d3ede;
+          color: white;
+          border: 3px solid white;
+          outline: none;
+          text-transform: uppercase;
+        }
+        .btn-purple:hover {
+          box-shadow: white -5px 5px 0px 0px;
+          top: -5px;
+          left: 5px;
+        }
+        .fade {
+          transition: all 0.5s;
+        }
+        .fade:hover {
+          color: #5d3ede;
+          background: white;
+          border: 3px solid #5d3ede;
+          box-shadow: none;
+        }
+        .login-btn {
+          border: none;
+          border-radius: 5px;
+          color: white;
+          padding: 13px 20px;
+          min-width: 300px;
+          height: 45px;
+          font-size: 0.9em;
+          transition: all 0.5s;
+        }
+        .green-login {
+          background: #04c35c;
+          border: 2px solid #04c35c;
+        }
+        .green-login:hover {
+          color: #04c35c;
+          background: white;
+          border: 2px solid #04c35c;
+        }
+        .google-btn {
+          color: white;
+          background: #2d3748;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 2px solid #2d3748;
+        }
+        .google-btn:hover {
+          background: white;
+          color: #2d3748;
+          border: 2px solid #2d3748;
+        }
+        .google-btn img {
+          padding-right: 0.5em;
+        }
+        .filter-tag {
+          display: inline-block;
+          padding: 0.3rem 0.6rem;
+          border-radius: 0.5rem;
+          border: 1px solid #99879d;
+          color: #99879d;
+        }
+        .filter-tag:hover {
+          background: #99879d80;
+          color: #ffffff;
+          cursor: pointer;
+        }
+        .filter-tag-active {
+          background: #99879d;
+          color: #ffffff;
         }
       `}</style>
     </div>
