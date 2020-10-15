@@ -1,12 +1,65 @@
 const Header = () => (
-  <header>
+  <header id="Header">
     <h2>super(code)</h2>
-    <div>
-      <ul>
-        <li></li>
-        <li></li>
+    <div id="menuToggle">
+      <img id="MenuButtonImg" src="/MenuButton.svg" alt="" />
+      <ul id="menu">
+        <a href="#">
+          <li>Login</li>
+        </a>
+        <a href="#">
+          <li>Contact</li>
+        </a>
       </ul>
     </div>
+
+    <style jsx>{`
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #Header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 50px;
+      }
+      #Header h2 {
+        color: white;
+      }
+      #menu {
+        position: absolute;
+        width: 50vw;
+        height: 50vh;
+        margin: -80px 100px 0 0;
+        padding-top: 125px;
+        right: -100px;
+        background: #edc;
+        // opacity: 0.5;
+        list-style-type: none;
+        transform-origin: 0% 0%;
+        transform: translate(100%, 0);
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+      }
+
+      #menu li {
+        padding: 30px 0;
+        font-size: 22px;
+      }
+      #menu a {
+        text-decoration: none !important;
+        color: #232323;
+        transition: color 0.3s ease;
+      }
+      #menu a:hover {
+        color: #2ecc71;
+      }
+
+      #menuToggle ~ ul {
+        transform: scale(1, 1);
+        opacity: 1;
+      }
+    `}</style>
   </header>
 );
 export default Header;
