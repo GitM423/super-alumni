@@ -1,67 +1,125 @@
-import React from "react";
+import React, { Component } from "react";
 import axios from "axios";
 
-import FilterTag from "../components/essentials/FilterTag.component";
+import FiltersSearch from "../essentials/FiltersSearch.component";
+import FilterTag from "../essentials/FilterTag.component";
+import FilterTagActive from "../essentials/FilterTag.component";
 
-import AlumniList from "../components/pool/AlumniList.component";
-import OrderList from "../components/pool/OrderList.component";
+import AlumniList from "./partials/AlumniList.component";
+import OrderList from "./partials/OrdersList.component";
 
-class Pool extends React.Component {
+class Pool extends Component {
   constructor(props) {
     super(props);
-    // this.onSubmitForm = this.onSubmitForm.bind(this);
-    // this.onChangeFirstName = this.onChangeFirstName.bind(this);
-    // this.onChangeLastName = this.onChangeLastName.bind(this);
-    // this.onChangeEmail = this.onChangeEmail.bind(this);
-    // this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
-    // this.onChangeMessage = this.onChangeMessage.bind(this);
+    this.expandFilters = this.expandFilters.bind("this");
 
     this.state = {
-      poolSelection: "alumni",
-      filterTags: ["tag", "tag", "forrest"],
+      poolSelection: "",
+      activeFilterTags: [],
+      filtesExpanded: false,
+      filtersData: [{ _id: "", options: ["test"] }],
     };
   }
 
-  componentDidMount() {
-    axios
+  async componentDidMount() {
+    await axios
       .get("http://localhost:5000/api/filters")
       .then((response) => {
         console.log("Data: ", response.data);
+        this.setState({ filtersData: response.data });
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
+  expandFilters() {}
+
   render() {
-    console.log(this.state.filterTags);
     return (
       <main id="pool">
-        <section>
-          <h1>Super Alumni Pool</h1>
+        {this.state.poolSelection === "" ? (
           <div>
-            {this.state.filterTags.map((tag) => {
-              return <FilterTag tag={tag} />;
-            })}
-            <div>Alle Filter</div>
+            <h1>Select Pool</h1>
+            <button
+              onClick={() => {
+                this.setState({ poolSelection: "alumni" });
+              }}
+            >
+              Super Alumni
+            </button>
+            <button
+              onClick={() => {
+                this.setState({ poolSelection: "orders" });
+              }}
+            >
+              Orders
+            </button>
           </div>
-          <div className="add-filter"></div>
-          <p>
-            Army had half a day. Bad news. Andy Griffith turned us down. He
-            didn't like his nice trailer. Did you enjoy your meal, Mom? You
-            drank it fast enough. Get me a vodka rocks. And a piece of toast.
-            Marry me.”
-          </p>
-        </section>
-
-        {this.state.poolSelection === "alumni" ? (
-          //   <AlumniList />
-          <div></div>
+        ) : this.state.poolSelection === "alumni" ? (
+          <div>
+            <div>
+              <h1>Super Alumni Pool</h1>
+              <button
+                onClick={() => {
+                  this.setState({ poolSelection: "orders" });
+                }}
+              >
+                Orders
+              </button>
+              <div>
+                {this.state.activeFilterTags.map((tag) => {
+                  return <FilterTagActive tag={tag} />;
+                })}
+              </div>
+              <div className="add-filter">
+                {this.state.filtersData.map((filter) => {
+                  <div>
+                    <h2>{filter._id}</h2>
+                    {filter.options.map((filterOption) => {
+                      return <FilterTag tag={filterOption} />;
+                    })}
+                  </div>;
+                })}
+              </div>
+              <p>
+                Army had half a day. Bad news. Andy Griffith turned us down. He
+                didn't like his nice trailer. Did you enjoy your meal, Mom? You
+                drank it fast enough. Get me a vodka rocks. And a piece of
+                toast. Marry me.”
+              </p>
+            </div>
+            {/* <AlumniList /> */}
+          </div>
         ) : this.state.poolSelection === "orders" ? (
-          //   <OrderList />
-          <div></div>
+          <div>
+            <div>
+              <h1>Order Pool</h1>
+              <button
+                onClick={() => {
+                  this.setState({ poolSelection: "alumni" });
+                }}
+              >
+                Super Alumni
+              </button>
+              <div>
+                {this.state.activeFilterTags.map((tag) => {
+                  return <FilterTagActive tag={tag} />;
+                })}
+                <div>Alle Filter</div>
+              </div>
+              <div className="add-filter"></div>
+              <p>
+                Army had half a day. Bad news. Andy Griffith turned us down. He
+                didn't like his nice trailer. Did you enjoy your meal, Mom? You
+                drank it fast enough. Get me a vodka rocks. And a piece of
+                toast. Marry me.”
+              </p>
+            </div>
+            {/* <OrderList /> */}
+          </div>
         ) : (
-          <section>Error</section>
+          <div>Error</div>
         )}
 
         <style jsx>{``}</style>
