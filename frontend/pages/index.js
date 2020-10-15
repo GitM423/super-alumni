@@ -1,8 +1,13 @@
-import Header from "../components/Header.component";
+import Header from "../components/essentials/Header.component";
+
+import Contact from "../components/home/Contact.component";
+
 const index = () => {
   return (
     <div>
-      <Header />
+          <Header />
+          
+          <Contact />
     </div>
   );
 };

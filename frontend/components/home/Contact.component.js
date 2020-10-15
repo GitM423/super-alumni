@@ -15,25 +15,16 @@ const Contact = () => {
         <p>Ratherstr. 25 40476 Düsseldorf</p>
       </article>
 
-      <form action="" method="POST">
-        <input type="text" name="vorname" id="" placeholder="Vorname"></input>
-        <input type="text" name="name" id="" placeholder="Name"></input>
-        <input type="text" name="email" id="" placeholder="E-mail"></input>
-        <input
-          type="text"
-          name="telefon"
-          id=""
-          placeholder="Telefonnummer"
-        ></input>
-        <textarea
-          name="nachricht"
-          id=""
-          cols="30"
-          rows="10"
-          placeholder="Nachricht"
-        ></textarea>
-        <input className="contact-btn" type="submit" value="Einsenden"></input>
-      </form>
+      <form action="/api/contact/send" method="POST">
+            <fieldset>
+                <input type="text" name="firstName" id="" placeholder="Vorname"></input>
+                <input type="text" name="lastName" id="" placeholder="Name"></input>
+                <input type="text" name="email" id="" placeholder="Email"></input>
+                <input type="text" name="phoneNumber" id="" placeholder="Telefonnummer"></input>
+                <textarea name="message" id="" cols="30" rows="10" placeholder="Nachricht"></textarea>
+            </fieldset>
+            <input className="contact-btn" type="submit" value="Einsenden"></input>
+        </form>
 
       <style jsx>{`
         h1 {
