@@ -59,7 +59,7 @@ class Contact extends React.Component {
     e.preventDefault();
 
     console.log(this.state.firstName);
-    axios.post("http://localhost:5000/api/contact/send", {
+    axios.post("http://localhost:5000/api/contacts/send", {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,

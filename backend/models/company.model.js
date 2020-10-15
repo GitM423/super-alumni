@@ -8,6 +8,6 @@ const companySchema = new Schema({
   imageUrl: { type: String },
 });
 
-const Company = mongoose.model("Company", companySchema);
+const Company = mongoose.model("Companies", companySchema);
 
 module.exports = Company;
