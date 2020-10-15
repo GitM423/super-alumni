@@ -2,11 +2,17 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const pricesSchema = new Schema({
-  _id: { type: String, required: true },
-  priceData: { type: Array, required: true },
-});
+const contactSchema = new Schema(
+  {
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    email: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
+    message: { type: String, required: true },
+  },
+  { timestamps: true }
+);
 
-const Prices = mongoose.model("Prices", pricesSchema);
+const Contact = mongoose.model("Contacts", contactSchema);
 
-module.exports = Prices;
+module.exports = Contact;

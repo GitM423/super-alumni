@@ -22,10 +22,12 @@ const Header = () => (
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px 50px;
+        padding: 10px 20px;
+        background-color: #000;
       }
       #Header h2 {
         color: white;
+        font-family: "neue-machina-light", sans-serif;
       }
       #menu {
         position: absolute;
