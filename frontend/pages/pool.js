@@ -1,9 +1,14 @@
 import React from "react";
+import Layout from "../components/Layout.component";
 
-import PoolComponent from "../components/pool/Pool.component";
+import PoolComponent from "../components/Pool.component";
 
 const Pool = () => {
-  return <PoolComponent />;
+  return (
+    <Layout>
+      <PoolComponent />
+    </Layout>
+  );
 };
 
 export default Pool;
