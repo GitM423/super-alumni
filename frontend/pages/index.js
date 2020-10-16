@@ -78,6 +78,7 @@ const index = () => {
             background-size: 69.3333px 69.3333px;
             height: 100vh;
             overflow-x: hidden;
+            font-family: "neue-machina-light", sans-serif;
           }
           .HomeSuperAlumni {
             display: flex;
@@ -90,10 +91,9 @@ const index = () => {
           }
           .SuperAlumniText {
             position: absolute;
-            top: 45%;
-            left: 26%;
+            top: 46%;
+            left: 25%;
             // transform: translate(-50%, -50%);
-            font-family: "neue-machina-regular", sans-serif;
           }
           .SuperAlumniText > h1 {
             color: rgba(61, 215, 172, 1);
@@ -108,7 +108,6 @@ const index = () => {
             font-size: 24px;
             letter-spacing: 2.5px;
             text-align: center;
-            font-family: "neue-machina-light", sans-serif;
           }
           .ScrollButton {
             color: #fff;
@@ -119,7 +118,6 @@ const index = () => {
           }
           .ScrollButton > p {
             font-size: 15px;
-            font-family: "neue-machina-light", sans-serif;
           }
           .arrow {
             display: -webkit-box;
@@ -199,11 +197,10 @@ const index = () => {
           #Hero {
             height: 141vh;
             background-color: #fff;
+            font-family: "neue-machina-light", sans-serif;
           }
           .HeroArticle {
             padding: 100px 0 0 250px;
-            font-family: "neue-machina-regular", sans-serif;
-            font-weight: 600;
           }
           .HeroArticle div {
             padding: 40px 0;
@@ -219,12 +216,13 @@ const index = () => {
             text-decoration: none;
             color: #000;
             font-size: 80px;
-            font-family: "neue-machina-regular", sans-serif;
-            font-weight: bold;
+            font-family: "neue-machina-light", sans-serif;
+            font-weight: 100;
           }
           .HeroArticle a:hover {
             color: #fff;
             -webkit-text-stroke: 2px rgba(61, 215, 172, 1);
+            -webkit-text-fill-color: white;
             transition: 0.6s;
           }
           .HeroAbout {
@@ -243,7 +241,7 @@ const index = () => {
           .HeroEmailUs {
             margin: 50px 0 0 220px;
             max-width: 220px;
-            font-family: "neue-machina-light", sans-serif;
+            // font-family: "neue-machina-light", sans-serif;
           }
           .HeroEmailUs .HeroLine {
             width: 220px;
