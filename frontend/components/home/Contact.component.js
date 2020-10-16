@@ -138,113 +138,113 @@ class Contact extends React.Component {
         </main>
 
         <style jsx>{`
-         main {
-          height: 100vh;
-          background: black;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 3em;
-          padding: 12% 8%;
-        }
-        main article {
-          color: #3dd7ac;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-        form fieldset {
-          border: none;
-        }
-        form input,
-        form textarea {
-          display: block;
-          width: 100%;
-          border: 2px solid white;
-          outline: none;
-          padding: 0.8em;
-          margin: 1em 0;
-          font-size: 0.9em;
-          font-weight: 200;
-          color: white;
-          min-width: 25em;
-          background: none;  
-          font-size: 1em;
-          font-family: "neue-machina-light", sans-serif;
-          font-weight: 100;
-          letter-spacing: 1px;
-        }
-       main article h1 {
-          font-size: 5em;
-          font-family: "neue-machina-light", sans-serif;
-          font-weight: 100;
-        }
-        .stroke {
-          -webkit-text-stroke: 2px #3dd7ac;
-          -webkit-text-fill-color: black;
-        }
-        main article p {
-          font-size: 1.2em;
-          line-height: 1.5;
-          width: 80%;
-          font-family: "neue-machina-light", sans-serif;
-          font-weight: 100;
-        }
-        ::placeholder {
-          color: white;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          font-size: 0.8em;
-          font-family: "neue-machina-regular", sans-serif;
-        }      
-
-        @media (min-width: 768px) and (max-width: 1024px) {
           main {
-            height: auto;
-            grid-template-columns: 1fr;
-            gap: 1em;
-            padding: 7% 10%;
-          }
-          main article h1 {
-            width: 80%;
-            font-size: 4em;
-            padding-bottom: 0.8em;
-          }
-          main article div {
-            padding-bottom: 1.5em;
-          }
-          form input,
-          form textarea {
-            min-width: auto;
-          }
-        }
- 
-        @media (min-width: 320px) and (max-width: 767px) {
-          main {
-            height: auto;
-            grid-template-columns: 1fr;
-            gap: 1em;
-            padding: 7% 10%;
-          }
-          main article h1 {
-            width: 100%;
-            font-size: 3em;
-            padding-bottom: 0.8em;
+            height: 100vh;
+            background: black;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3em;
+            padding: 12% 8%;
           }
           main article {
-            width: 100%;
+            color: #3dd7ac;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
           }
-          main article div {
-            padding-bottom: 1.5em;
-          }
-          main article p {
-            font-size: 1em;
-            width: 100%;
+          form fieldset {
+            border: none;
           }
           form input,
           form textarea {
-            min-width: auto;
+            display: block;
+            width: 100%;
+            border: 2px solid white;
+            outline: none;
+            padding: 0.8em;
+            margin: 1em 0;
+            font-size: 0.9em;
+            font-weight: 200;
+            color: white;
+            min-width: 25em;
+            background: none;
+            font-size: 1em;
+            font-family: "neue-machina-light", sans-serif;
+            font-weight: 100;
+            letter-spacing: 1px;
           }
-        }
+          main article h1 {
+            font-size: 5em;
+            font-family: "neue-machina-light", sans-serif;
+            font-weight: 100;
+          }
+          .stroke {
+            -webkit-text-stroke: 2px #3dd7ac;
+            -webkit-text-fill-color: black;
+          }
+          main article p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            width: 80%;
+            font-family: "neue-machina-light", sans-serif;
+            font-weight: 100;
+          }
+          ::placeholder {
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8em;
+            font-family: "neue-machina-regular", sans-serif;
+          }
+
+          @media (min-width: 768px) and (max-width: 1024px) {
+            main {
+              height: auto;
+              grid-template-columns: 1fr;
+              gap: 1em;
+              padding: 7% 10%;
+            }
+            main article h1 {
+              width: 80%;
+              font-size: 4em;
+              padding-bottom: 0.8em;
+            }
+            main article div {
+              padding-bottom: 1.5em;
+            }
+            form input,
+            form textarea {
+              min-width: auto;
+            }
+          }
+
+          @media (min-width: 320px) and (max-width: 767px) {
+            main {
+              height: auto;
+              grid-template-columns: 1fr;
+              gap: 1em;
+              padding: 7% 10%;
+            }
+            main article h1 {
+              width: 100%;
+              font-size: 3em;
+              padding-bottom: 0.8em;
+            }
+            main article {
+              width: 100%;
+            }
+            main article div {
+              padding-bottom: 1.5em;
+            }
+            main article p {
+              font-size: 1em;
+              width: 100%;
+            }
+            form input,
+            form textarea {
+              min-width: auto;
+            }
+          }
         `}</style>
       </div>
     );
