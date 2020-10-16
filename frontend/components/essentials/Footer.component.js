@@ -1,14 +1,29 @@
 const Footer = () => {
   return (
     <footer>
-      <ul>
+      <ul className="HeroFooter">
         <li>super(code)</li>
         <li>© 2002 - 2020</li>
       </ul>
       <style jsx>{`
-             li {
-                 color: blue;
-          `}</style>
+        .HeroFooter {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: #000;
+          padding: 10px 20px;
+          height: 10vh;
+          list-style: none;
+          font-family: "neue-machina-light", sans-serif;
+        }
+        .HeroFooter li:nth-child(1) {
+          color: #fff;
+          font-size: 25px;
+        }
+        .HeroFooter li:nth-child(2) {
+          color: rgba(61, 215, 172, 1);
+        }
+      `}</style>
     </footer>
   );
 };

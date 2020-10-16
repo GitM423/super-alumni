@@ -1,6 +1,7 @@
 import Header from "../components/essentials/Header.component";
 import Contact from "../components/home/Contact.component";
-
+import Footer from "../components/essentials/Footer.component";
+import SocialMedia from "../components/essentials/SocialMedia.component";
 const index = () => {
   return (
     <div>
@@ -12,7 +13,7 @@ const index = () => {
           <img src="/superAlumni2.svg" alt="" />
           <img src="/superAlumni3.svg" alt="" />
         </article>
-
+        {/* Headline Super Alumni */}
         <article className="SuperAlumniText">
           <h1>super alumni</h1>
           <h3>
@@ -20,11 +21,17 @@ const index = () => {
             He didn't like his trailer.
           </h3>
         </article>
-
-        <article className="arrow">
+        {/* Scroll Button  */}
+        <article className="ScrollButton">
           <p>SCROLL FOR MORE</p>
+          <div className="arrow">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </article>
       </section>
+
       {/* Hero Seite / Landing Page 2 */}
       <section id="Hero">
         <article className="HeroArticle">
@@ -50,6 +57,8 @@ const index = () => {
           <p>Email us, we need a coffee</p>
           <div className="HeroLine"></div>
         </article>
+        <SocialMedia />
+        <Footer />
       </section>
 
       <Contact />
@@ -67,8 +76,8 @@ const index = () => {
               rgb(255, 255, 255);
 
             background-size: 69.3333px 69.3333px;
-            height: 90vh;
-            // position: relative;
+            height: 100vh;
+            overflow-x: hidden;
           }
           .HomeSuperAlumni {
             display: flex;
@@ -99,20 +108,96 @@ const index = () => {
             font-size: 24px;
             letter-spacing: 2.5px;
             text-align: center;
+            font-family: "neue-machina-light", sans-serif;
           }
-          .arrow {
+          .ScrollButton {
             color: #fff;
             position: absolute;
-            bottom: 10%;
+            bottom: -10%;
             left: 50%;
             transform: translate(-50%, -50%);
           }
-          .arrow > p {
+          .ScrollButton > p {
             font-size: 15px;
+            font-family: "neue-machina-light", sans-serif;
           }
-
+          .arrow {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            height: 100px;
+            padding-bottom: 50px;
+            margin: 25px 0 0 0;
+          }
+          .arrow span {
+            display: block;
+            width: 30px;
+            height: 30px;
+            border-bottom: 2px solid rgba(61, 215, 172, 1);
+            border-right: 2px solid rgba(61, 215, 172, 1);
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            margin: -10px;
+            -webkit-animation: animate 2s infinite;
+            animation: animate 2s infinite;
+          }
+          .arrow span:nth-child(2) {
+            -webkit-animation-delay: -0.2s;
+            animation-delay: -0.2s;
+          }
+          .arrow span:nth-child(3) {
+            -webkit-animation-delay: -0.4s;
+            animation-delay: -0.4s;
+          }
+          @-webkit-keyframes animate {
+            0% {
+              opacity: 0;
+              -webkit-transform: rotate(45deg) translate(-20px, -20px);
+              -ms-transform: rotate(45deg) translate(-20px, -20px);
+              transform: rotate(45deg) translate(-20px, -20px);
+            }
+            50% {
+              opacity: 1;
+            }
+            100% {
+              opacity: 0;
+              -webkit-transform: rotate(45deg) translate(20px, 20px);
+              -ms-transform: rotate(45deg) translate(20px, 20px);
+              transform: rotate(45deg) translate(20px, 20px);
+            }
+          }
+          @keyframes animate {
+            0% {
+              opacity: 0;
+              -webkit-transform: rotate(45deg) translate(-20px, -20px);
+              -ms-transform: rotate(45deg) translate(-20px, -20px);
+              transform: rotate(45deg) translate(-20px, -20px);
+            }
+            50% {
+              opacity: 1;
+            }
+            100% {
+              opacity: 0;
+              -webkit-transform: rotate(45deg) translate(20px, 20px);
+              -ms-transform: rotate(45deg) translate(20px, 20px);
+              transform: rotate(45deg) translate(20px, 20px);
+            }
+          }
           #Hero {
-            height: 150vh;
+            height: 141vh;
             background-color: #fff;
           }
           .HeroArticle {
@@ -123,22 +208,24 @@ const index = () => {
           .HeroArticle div {
             padding: 40px 0;
           }
-          .HeroArticle p {
+          .HeroArticle div p {
             font-size: 15px;
             font-weight: 100;
             transform: rotate(-90deg);
+            color: #000;
           }
           .HeroArticle a {
             padding-left: 10px;
             text-decoration: none;
             color: #000;
             font-size: 80px;
-            font-family: "neue-machina-light", sans-serif;
+            font-family: "neue-machina-regular", sans-serif;
+            font-weight: bold;
           }
           .HeroArticle a:hover {
             color: #fff;
             -webkit-text-stroke: 2px rgba(61, 215, 172, 1);
-            transition: 0.4s;
+            transition: 0.6s;
           }
           .HeroAbout {
             display: flex;
@@ -154,8 +241,9 @@ const index = () => {
           }
 
           .HeroEmailUs {
-            margin: 50px 0 0 200px;
+            margin: 50px 0 0 220px;
             max-width: 220px;
+            font-family: "neue-machina-light", sans-serif;
           }
           .HeroEmailUs .HeroLine {
             width: 220px;
@@ -182,7 +270,7 @@ const index = () => {
           scroll-behavior: smooth;
         }
         p {
-          font-size: 20px;
+          //   font-size: 20px;
         }
         * {
           margin: 0;

@@ -3,14 +3,14 @@ const Header = () => (
     <h2>super(code)</h2>
     <div id="menuToggle">
       <img id="MenuButtonImg" src="/MenuButton.svg" alt="" />
-      <ul id="menu">
+      {/* <ul id="menu">
         <a href="#">
           <li>Login</li>
         </a>
         <a href="#">
           <li>Contact</li>
         </a>
-      </ul>
+      </ul> */}
     </div>
 
     <style jsx>{`
