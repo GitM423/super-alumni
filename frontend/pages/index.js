@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Header from "../components/essentials/Header.component";
 import Contact from "../components/home/Contact.component";
 import Footer from "../components/essentials/Footer.component";
@@ -277,6 +278,19 @@ const index = () => {
         }
       `}</style>
     </div>
+=======
+import React from "react";
+import Layout from "../components/Layout.component";
+
+import HomeComponent from "../components/Home.component";
+
+const Home = () => {
+  return (
+    <Layout>
+      <HomeComponent />
+    </Layout>
+>>>>>>> ab02a773677068aee2df4ee10808ebe206cd04eb
   );
 };
-export default index;
+
+export default Home;

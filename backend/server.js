@@ -25,15 +25,17 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
-const developerRouter = require("./routes/alumni.route");
-const companyRouter = require("./routes/company.route");
-const orderRouter = require("./routes/order.route");
-const contactRouter = require("./routes/contact.route");
+const alumnisRouter = require("./routes/alumni.route");
+const companiesRouter = require("./routes/company.route");
+const ordersRouter = require("./routes/order.route");
+const contactsRouter = require("./routes/contact.route");
+const filterRouter = require("./routes/filter.route");
 
-app.use("/api/developers", developerRouter);
-app.use("/api/company", companyRouter);
-app.use("/api/order", orderRouter);
-app.use("/api/contact", contactRouter);
+app.use("/api/alumni", alumnisRouter);
+app.use("/api/companies", companiesRouter);
+app.use("/api/orders", ordersRouter);
+app.use("/api/contacts", contactsRouter);
+app.use("/api/filters", filterRouter);
 
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("client/build"));
