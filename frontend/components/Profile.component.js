@@ -1,35 +1,55 @@
 import React, { Component } from "react";
 
-// import ProfileInfo from "./profile/partials/ProfileInfo.component";
-// import ProfileEdit from "./profile//ProfileEdit.component";
+import ProfileInfo from "./profile//ProfileInfo.component";
+import ProfileEdit from "./profile//ProfileEdit.component";
 
 // import Header from "./essentials/Header.component";
 
 class Profile extends Component {
-  state = { profileOption: "selection" };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      profileOption: props.profileOption,
+      profileType: "",
+      profile: props.profile
+    };
+  }
+
+  handleProfileSelectionType(profileType) {
+    this.setState({ profileOption: "edit", profileType: profileType })
+  }
+
   render() {
     return (
       <div id="profile">
         {this.state.profileOption === "selection" ? (
           <main>
+            <div className="vertical-text">Start</div>
             <div className="left">
-              <button onClick="handleSelection('developer')" className="btn btn-black">Entwickler</button>
+              <button
+                onClick={() => this.handleProfileSelectionType("developer")}
+                className="btn btn-black"
+              >
+                Entwickler
+              </button>
             </div>
             <div className="right">
-              <button onClick="handleSelection('client')" className="btn btn-green">Kunde</button>
+              <button
+                onClick={() => this.handleProfileSelectionType("client")}
+                className="btn btn-green"
+              >
+                Kunde
+              </button>
             </div>
           </main>
         ) : this.state.profileOption === "info" ? (
-          <ProfileInfo />
+          <ProfileInfo profile={this.state.profile} />
         ) : this.state.profileOption === "edit" ? (
-          <ProfileEdit />
+          <ProfileEdit profileType={this.state.profileType} />
         ) : (
           <div>Error</div>
         )}
-
-        <div>
-          <div className="vertical-text">Start</div>
-        </div>
 
         <style jsx>
           {`

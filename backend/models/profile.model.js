@@ -2,9 +2,8 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const alumniSchema = new Schema({
-  // firstName: { type: String, required: true },
-  // lastName: { type: String, required: true },
+const profileSchema = new Schema({
+  //userIdentity: {type:String, required: true},
   displayName: {type:String, required: true},
   email: { type: String, required: true },
   githubUrl: { type: String },
@@ -14,8 +13,10 @@ const alumniSchema = new Schema({
   field: { type: Array },
   skills: { type: Array },
   experience: { type: Number },
+  about: { type: String, required: true },
+  profileType: {type: String, required: true}
 });
 
-const Alumni = mongoose.model("Alumni", alumniSchema);
+const Profile = mongoose.model("Profiles", profileSchema);
 
-module.exports = Alumni;
+module.exports = Profile;

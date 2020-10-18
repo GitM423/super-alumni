@@ -26,12 +26,14 @@ connection.once("open", () => {
 });
 
 const alumnisRouter = require("./routes/alumni.route");
+const profilesRouter = require("./routes/profile.route");
 const companiesRouter = require("./routes/company.route");
 const ordersRouter = require("./routes/order.route");
 const contactsRouter = require("./routes/contact.route");
 const filterRouter = require("./routes/filter.route");
 
 app.use("/api/alumni", alumnisRouter);
+app.use("/api/profiles", profilesRouter);
 app.use("/api/companies", companiesRouter);
 app.use("/api/orders", ordersRouter);
 app.use("/api/contacts", contactsRouter);
