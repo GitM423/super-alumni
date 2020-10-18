@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-
 import ProfileInfo from "./profile//ProfileInfo.component";
 import ProfileEdit from "./profile//ProfileEdit.component";
-
-// import Header from "./essentials/Header.component";
 
 class Profile extends Component {
 
@@ -46,7 +43,7 @@ class Profile extends Component {
         ) : this.state.profileOption === "info" ? (
           <ProfileInfo profile={this.state.profile} />
         ) : this.state.profileOption === "edit" ? (
-          <ProfileEdit profileType={this.state.profileType} />
+              <ProfileEdit profile={this.state.profile} profileType={this.state.profileType} />
         ) : (
           <div>Error</div>
         )}

@@ -3,9 +3,10 @@ import React from "react";
 import Layout from "../components/Layout.component";
 import ProfileComponent from "../components/Profile.component";
 
-const Profile = ({ profile }) => {
-  let profileOption = "selection";
-  if (profile != null) {
+const Profile = ({ profile, profileOption }) => {
+  if (!profile) {
+    profileOption = "selection";
+  } else if (profile && profileOption != "edit") { 
     profileOption = "info"
   }
 
@@ -16,11 +17,12 @@ const Profile = ({ profile }) => {
   );
 };
 
-Profile.getInitialProps = async (ctx) => {
+Profile.getInitialProps = async ({ query }) => {
   try {
-    const response = await axios.get("http://localhost:5000/api/profiles/asd@asd3.com");
-    console.log(response);
-    return { profile: response.data }
+    const { profileOption } = query
+    console.log(process.env)
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/profiles/asd@asd.com`);
+    return { profile: response.data, profileOption: profileOption }
   } catch (error) {
     console.error(error);
   }

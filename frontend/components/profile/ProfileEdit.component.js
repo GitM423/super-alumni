@@ -19,18 +19,21 @@ class ProfileEdit extends Component {
     this.onChangeAbout = this.onChangeAbout.bind(this);
 
     this.state = {
-      profileType: props.profileType,
-      displayName: "",
-      email: "",
-      githubUrl: "",
-      linkedinUrl: "",
-      imageUrl: "",
-      workingHours: "",
-      field: "",
-      skills: "",
-      experience: "",
-      about: ""
+      profileType: props.profile?.profileType ?? props.profileType,
+      displayName: props.profile?.displayName,
+      email: props.profile?.email,
+      githubUrl: props.profile?.githubUrl,
+      linkedinUrl: props.profile?.linkedinUrl,
+      imageUrl: props.profile?.imageUrl,
+      workingHours: props.profile?.workingHours,
+      field: props.profile?.field,
+      skills: props.profile?.skills,
+      experience: props.profile?.experience,
+      about: props.profile?.about,
+      passedInProfile: props.profile
     };
+
+    console.log(props.profile)
   }
 
   onChangeDisplayName = (e) => this.setState({ displayName: e.target.value });
@@ -46,9 +49,8 @@ class ProfileEdit extends Component {
 
   onSubmitForm(e) {
     e.preventDefault();
-    console.log(this.state.firstName);
 
-    axios.post("http://localhost:5000/api/profiles", {
+    const data = {
       displayName: this.state.displayName,
       email: this.state.email,
       githubUrl: this.state.githubUrl,
@@ -60,7 +62,14 @@ class ProfileEdit extends Component {
       experience: this.state.experience,
       about: this.state.about,
       profileType: this.state.profileType
-    });
+    }
+
+    if (!this.state.passedInProfile) {
+      axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/profiles`, data);
+    } else {
+      axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/profiles`, data);
+    }
+
     window.location.href = "/profile"
   }
 
@@ -129,12 +138,10 @@ class ProfileEdit extends Component {
             ></textarea>
 
             <div>
-              <label for="workingHours">Prefered working hours</label>
-              <select name="" id="">
-                <option value="">Freelance</option>
-                <option value="">Full-time</option>
-                <option value="">Part-time</option>
-              </select>
+              <h4>Prefered working hours</h4>
+              <div className="filter-tag">Freelance +</div>
+              <div className="filter-tag">Vollzeit +</div>
+              <div className="filter-tag">Teilzeit +</div>
             </div>
 
             <input
@@ -151,12 +158,12 @@ class ProfileEdit extends Component {
             </div>
 
             <div className="bar-wrap">
-              <label for="experience">Experience</label>
-              <select name="" id="">
-                <option value="">Less then 1 Year</option>
-                <option value="">1-2 Years</option>
-                <option value="">More than 2 years</option>
-              </select>
+              <div>
+                <h4>Experience</h4>
+                <div className="filter-tag">Less than 1 Year</div>
+                <div className="filter-tag">1-2 years</div>
+                <div className="filter-tag">More than 2 years</div>
+              </div>
               {/* <h3>Berufserfahrung</h3>
                             <div className="full-bar">
                                 <span className="bar"></span>
@@ -320,7 +327,7 @@ class ProfileEdit extends Component {
             .center-btn {
               position: absolute;
               bottom: 5%;
-              left: 43%;
+              left: 45%;
             }
             @media (min-width: 768px) and (max-width: 1024px) {
               form {
