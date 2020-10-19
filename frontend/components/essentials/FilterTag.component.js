@@ -4,9 +4,33 @@ class FilterTag extends React.Component {
   state = {};
   render() {
     return (
-      <div className="filter-tag">
-        {this.props.tag}
+      <div className="filter-tag-container">
+        {this.props.active ? (
+          <div
+            className="filter-tag filter-tag-active"
+            onClick={() => {
+              this.props.toggleFilters(this.props.tag);
+            }}
+          >
+            {this.props.tag} <span>-</span>
+          </div>
+        ) : (
+          <div
+            className="filter-tag"
+            onClick={() => {
+              this.props.toggleFilters(this.props.tag);
+            }}
+          >
+            {this.props.tag} <span>+</span>
+          </div>
+        )}
         <style jsx>{`
+          .filter-tag-container {
+            display: inline-block;
+            margin: 0.2rem;
+
+            // margin: 0 0.5rem 0.5rem 0;
+          }
           .filter-tag {
             display: inline-block;
             padding: 0.3rem 0.6rem;

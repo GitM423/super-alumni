@@ -7,6 +7,6 @@ const filterSchema = new Schema({
   options: { type: Array, required: true },
 });
 
-const Filter = mongoose.model("Filters", filterSchema);
+const Filter = mongoose.model("filters", filterSchema);
 
 module.exports = Filter;

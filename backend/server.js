@@ -5,12 +5,16 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 // const path = require("path");
 
-const app = express();
+const passport = require("passport");
+require("./config/passport.config");
 
-app.use(cors());
-app.use(express.json());
+const cookieSession = require("cookie-session");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 
-// let databaseUri = process.env.DB_URI;
+// Passport config
+
+// Connect to DB
 
 mongoose
   .connect(process.env.DB_URI, {
@@ -25,19 +29,48 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
-const alumnisRouter = require("./routes/alumni.route");
-const profilesRouter = require("./routes/profile.route");
-const companiesRouter = require("./routes/company.route");
-const ordersRouter = require("./routes/order.route");
-const contactsRouter = require("./routes/contact.route");
-const filterRouter = require("./routes/filter.route");
+// Set app
 
-app.use("/api/alumni", alumnisRouter);
-app.use("/api/profiles", profilesRouter);
-app.use("/api/companies", companiesRouter);
-app.use("/api/orders", ordersRouter);
-app.use("/api/contacts", contactsRouter);
-app.use("/api/filters", filterRouter);
+const app = express();
+
+// Body parser
+
+app.use(cors());
+app.use(express.json());
+
+// Sessions
+
+app.use(
+  cookieSession({
+    name: "session",
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [process.env.SESSION_SECRET],
+  })
+);
+
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     store: new MongoStore({ mongooseConnection: mongoose.connection }),
+//   })
+// );
+
+// Passport middleware
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Set Routes
+
+app.use("/api/alumni", require("./routes/alumni.route"));
+app.use("/api/companies", require("./routes/company.route"));
+app.use("/api/orders", require("./routes/order.route"));
+app.use("/api/contacts", require("./routes/contact.route"));
+app.use("/api/filters", require("./routes/filter.route"));
+app.use("/auth", require("./routes/auth.route"));
+app.use("/api/profiles", require("./routes/profile.route"));
 
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("client/build"));

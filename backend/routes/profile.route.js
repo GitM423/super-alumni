@@ -1,33 +1,34 @@
 const router = require("express").Router();
-let Profile = require("../models/profile.model");
+let Profile = require("../models/user.model");
 
 // GET single Profile
 router.route("/:email").get((req, res) => {
-  Profile
-    .findOne({ email: req.params.email })
-    .then((result) => res.json(result));
+  Profile.findOne({ email: req.params.email }).then((result) =>
+    res.json(result)
+  );
 });
 
 // PUT update profile
 router.route("/").put((req, res) => {
-
   const filter = { email: req.body.email };
   const update = {
-    displayName: req.body.displayName,
     email: req.body.email,
+    displayName: req.body.displayName,
+    imageUrl: req.body.imageUrl,
+
+    profileType: req.body.profileType,
+
+    description: req.body.about,
     githubUrl: req.body.githubUrl,
     linkedinUrl: req.body.linkedinUrl,
-    imageUrl: req.body.imageUrl,
+    experience: req.body.experience,
+
     workingHours: req.body.workingHours,
     field: req.body.field,
     skills: req.body.skills,
-    experience: req.body.experience,
-    about: req.body.about,
-    profileType: req.body.profileType
   };
 
-  Profile
-    .findOneAndUpdate(filter, update)
+  Profile.findOneAndUpdate(filter, update)
     .then((result) => {
       console.log("Profile updated!");
     })
@@ -35,25 +36,27 @@ router.route("/").put((req, res) => {
       console.log(err);
       res.status(500);
     });
-
 });
 
 // POST Profile
 router.route("/").post((req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
 
   const newProfile = new Profile({
-    displayName: req.body.displayName,
     email: req.body.email,
+    displayName: req.body.displayName,
+    imageUrl: req.body.imageUrl,
+
+    profileType: req.body.profileType,
+
+    description: req.body.about,
     githubUrl: req.body.githubUrl,
     linkedinUrl: req.body.linkedinUrl,
-    imageUrl: req.body.imageUrl,
+    experience: req.body.experience,
+
     workingHours: req.body.workingHours,
     field: req.body.field,
     skills: req.body.skills,
-    experience: req.body.experience,
-    about: req.body.about,
-    profileType: req.body.profileType
   });
 
   newProfile
@@ -69,10 +72,9 @@ router.route("/").post((req, res) => {
 
 // DELETE profile
 router.route("/:email").delete((req, res) => {
-  Profile
-    .findOneAndDelete({ email: req.params.email })
-    .then((result) => res.json(result));
+  Profile.findOneAndDelete({ email: req.params.email }).then((result) =>
+    res.json(result)
+  );
 });
-
 
 module.exports = router;
