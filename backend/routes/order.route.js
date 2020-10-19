@@ -3,13 +3,13 @@ let Order = require("../models/order.model");
 
 router.route("/").get((req, res) => {
   Order.find()
-    .then((cards) => res.json(cards))
+    .then((orders) => res.json(orders))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.route("/:id").get((req, res) => {
   Order.findById(req.params.id)
-    .then((card) => res.json(card))
+    .then((order) => res.json(order))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 

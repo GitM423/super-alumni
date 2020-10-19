@@ -4,7 +4,7 @@ class ScrollArrow extends React.Component {
   state = {};
   render() {
     return (
-      <div class="arrow">
+      <div className="arrow">
         <span></span>
         <span></span>
         <span></span>
@@ -27,14 +27,14 @@ class ScrollArrow extends React.Component {
             -ms-flex-align: center;
             align-items: center;
             height: 100px;
-            padding-bottom: 50px;
+            // padding-bottom: 50px;
           }
           .arrow span {
             display: block;
             width: 30px;
             height: 30px;
-            border-bottom: 2px solid #fff;
-            border-right: 2px solid #fff;
+            border-bottom: 2px solid rgba(61, 215, 172, 1);
+            border-right: 2px solid rgba(61, 215, 172, 1);
             -webkit-transform: rotate(45deg);
             -ms-transform: rotate(45deg);
             transform: rotate(45deg);

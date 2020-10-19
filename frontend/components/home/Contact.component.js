@@ -160,10 +160,7 @@ class Contact extends React.Component {
             font-family: "neue-machina-light", sans-serif;
             font-weight: 100;
           }
-          .stroke {
-            -webkit-text-stroke: 2px #3dd7ac;
-            -webkit-text-fill-color: black;
-          }
+
           main article p {
             font-size: 1.2em;
             line-height: 1.5;

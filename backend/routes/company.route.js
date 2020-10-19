@@ -3,13 +3,13 @@ let Company = require("../models/company.model");
 
 router.route("/").get((req, res) => {
   Company.find()
-    .then((boosters) => res.json(boosters))
+    .then((companies) => res.json(companies))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.route("/:id").get((req, res) => {
   Company.findById(req.params.id)
-    .then((booster) => res.json(booster))
+    .then((company) => res.json(company))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
