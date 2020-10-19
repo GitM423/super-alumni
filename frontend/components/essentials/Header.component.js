@@ -32,10 +32,10 @@ const Header = () => (
       #menu {
         position: absolute;
         width: 50vw;
-        height: 50vh;
-        margin: -80px 100px 0 0;
-        padding-top: 125px;
-        right: -100px;
+        height: 100vh;
+        margin: -70px 0px 0 0;
+        padding-top: 300px;
+        right: 0px;
         background: #edc;
         // opacity: 0.5;
         list-style-type: none;
@@ -45,6 +45,7 @@ const Header = () => (
       }
 
       #menu li {
+        text-align: center;
         padding: 30px 0;
         font-size: 22px;
       }

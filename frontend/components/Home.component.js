@@ -1,7 +1,7 @@
 import Header from "../components/essentials/Header.component";
 import Contact from "../components/home/Contact.component";
-
 import ScrollArrow from "../components/essentials/ScrollArrow.component";
+import SocialMedia from "../components/essentials/SocialMedia.component";
 
 const Home = () => {
   return (
@@ -23,10 +23,17 @@ const Home = () => {
           </h3>
         </article>
 
-        <ScrollArrow />
-        {/* <article className="arrow">
-          <p>SCROLL FOR MORE</p>
-        </article> */}
+        <article className="ScrollForMore">
+          <div className="MadeBySuperAlumni">
+            <p>Made By Super Almuni</p>
+          </div>
+          <div>
+            <ScrollArrow />
+          </div>
+          <div>
+            <SocialMedia />
+          </div>
+        </article>
       </section>
       {/* Hero Seite / Landing Page 2 */}
       <section id="Hero">
@@ -34,14 +41,17 @@ const Home = () => {
           <div className="HeroAbout">
             <p>01</p>
             <a href="">About</a>
+            <img className="ImageAboutHover1" src="/01.png" alt="" />
           </div>
           <div className="HeroSuper">
             <p>02</p>
             <a href="">Super Alumni</a>
+            <img className="ImageSuperHover2" src="/02.png" alt="" />
           </div>
           <div className="HeroUnternehmen">
             <p>03</p>
             <a href="">Unternehmen</a>
+            <img className="ImageUnternehmenHover3" src="/03.png" alt="" />
           </div>
           <div className="HeroContact">
             <p>04</p>
@@ -53,6 +63,7 @@ const Home = () => {
           <p>Email us, we need a coffee</p>
           <div className="HeroLine"></div>
         </article>
+        <SocialMedia />
       </section>
 
       <Contact />
@@ -60,6 +71,7 @@ const Home = () => {
       <style jsx>
         {`
           #Home {
+            font-family: "neue-machina-light", sans-serif;
             background: linear-gradient(
                   90deg,
                   rgb(3, 0, 15) 68.3333px,
@@ -71,7 +83,6 @@ const Home = () => {
 
             background-size: 69.3333px 69.3333px;
             height: 90vh;
-            // position: relative;
           }
           .HomeSuperAlumni {
             display: flex;
@@ -82,12 +93,17 @@ const Home = () => {
             left: 21%;
             // transform: translate(-60%, -50%);
           }
+          .HomeSuperAlumni img:nth-child(2) {
+            margin-top: -3%;
+          }
+          .HomeSuperAlumni img:nth-child(3) {
+            margin-top: -3%;
+          }
           .SuperAlumniText {
             position: absolute;
-            top: 45%;
-            left: 26%;
+            top: 40%;
+            left: 24%;
             // transform: translate(-50%, -50%);
-            font-family: "neue-machina-regular", sans-serif;
           }
           .SuperAlumniText > h1 {
             color: rgba(61, 215, 172, 1);
@@ -103,24 +119,33 @@ const Home = () => {
             letter-spacing: 2.5px;
             text-align: center;
           }
-          .arrow {
+          .ScrollForMore {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             color: #fff;
-            position: absolute;
-            bottom: 10%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            padding: 500px 50px 0 50px;
+            // position: absolute;
+            // bottom: -5%;
+            // left: 50%;
+            // transform: translate(-50%, -50%);
           }
-          .arrow > p {
-            font-size: 15px;
+          .ScrollForMore > p {
+            font-size: 13px;
+          }
+          .MadeBySuperAlumni {
+            margin-left: -80px;
+            transform: rotate(-90deg);
           }
 
           #Hero {
             height: 150vh;
             background-color: #fff;
+            font-family: "neue-machina-light", sans-serif;
+            margin-left: 200px;
           }
           .HeroArticle {
-            padding: 100px 0 0 250px;
-            font-family: "neue-machina-regular", sans-serif;
+            padding: 100px 0 0 25px;
             font-weight: 600;
           }
           .HeroArticle div {
@@ -132,14 +157,54 @@ const Home = () => {
             transform: rotate(-90deg);
           }
           .HeroArticle a {
-            padding-left: 10px;
+            // padding-left: 10px;
             text-decoration: none;
             color: #000;
             font-size: 80px;
             font-family: "neue-machina-light", sans-serif;
           }
+
+          .ImageAboutHover1 {
+            height: 500px;
+            width: 400px;
+            object-fit: cover;
+            position: absolute;
+            right: 50px;
+            // top: 90%;
+            display: none;
+          }
+          .HeroAbout a:hover + .ImageAboutHover1 {
+            display: block;
+          }
+          .ImageSuperHover2 {
+            height: 500px;
+            width: 400px;
+            object-fit: cover;
+            position: absolute;
+            right: 50px;
+            top: 130%;
+            display: none;
+          }
+          .HeroSuper a:hover + .ImageSuperHover2 {
+            display: block;
+          }
+
+          .ImageUnternehmenHover3 {
+            height: 500px;
+            width: 400px;
+            object-fit: cover;
+            position: absolute;
+            right: 50px;
+            top: 150%;
+            display: none;
+          }
+          .HeroUnternehmen a:hover + .ImageUnternehmenHover3 {
+            display: block;
+          }
+
           .HeroArticle a:hover {
             color: #fff;
+            font-weight: 100;
             -webkit-text-stroke: 2px rgba(61, 215, 172, 1);
             transition: 0.4s;
           }
@@ -157,7 +222,7 @@ const Home = () => {
           }
 
           .HeroEmailUs {
-            margin: 50px 0 0 200px;
+            margin: 50px 0 0 0;
             max-width: 220px;
           }
           .HeroEmailUs .HeroLine {

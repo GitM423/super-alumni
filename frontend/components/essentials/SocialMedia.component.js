@@ -1,6 +1,6 @@
 const SocialMedia = () => (
   <div id="SocialMedia">
-    <ul className="SocialMediaIcon">
+    <ul className="SocialMediaIcon SocialMediaIcon2">
       <li>
         <a href="#" className="fa fa-facebook"></a>
       </li>
@@ -17,7 +17,6 @@ const SocialMedia = () => (
 
       .SocialMediaIcon {
         display: flex;
-        margin-left: 220px;
         padding: 40px 0;
         list-style: none;
       }
