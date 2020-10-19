@@ -13,6 +13,6 @@ const contactSchema = new Schema(
   { timestamps: true }
 );
 
-const Contact = mongoose.model("Contacts", contactSchema);
+const Contact = mongoose.model("contacts", contactSchema);
 
 module.exports = Contact;

@@ -3,13 +3,13 @@ let Filter = require("../models/filter.model");
 
 router.route("/").get((req, res) => {
   Filter.find()
-    .then((boosters) => res.json(boosters))
+    .then((filters) => res.json(filters))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.route("/:id").get((req, res) => {
   Filter.findById(req.params.id)
-    .then((booster) => res.json(booster))
+    .then((filter) => res.json(filter))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 

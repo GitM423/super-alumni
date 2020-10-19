@@ -3,13 +3,13 @@ let Alumni = require("../models/alumni.model");
 
 router.route("/").get((req, res) => {
   Alumni.find()
-    .then((boosters) => res.json(boosters))
+    .then((alumni) => res.json(alumni))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.route("/:id").get((req, res) => {
   Alumni.findById(req.params.id)
-    .then((booster) => res.json(booster))
+    .then((alumni) => res.json(alumni))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 

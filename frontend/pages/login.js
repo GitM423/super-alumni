@@ -3,12 +3,12 @@ import Layout from "../components/Layout.component";
 
 import { withRouter } from "next/router";
 
-import PoolComponent from "../components/Pool.component";
+import LoginComp from "../components/Home/Login.component";
 
 const Pool = () => {
   return (
     <Layout>
-      <PoolComponent />
+      <LoginComp />
     </Layout>
   );
 };
