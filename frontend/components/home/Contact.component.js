@@ -75,7 +75,7 @@ class Contact extends React.Component {
         <main id="contact">
           <article>
             <h1>
-              Hi, wie können wir dir <span class="stroke">helfen?</span>{" "}
+              Hi, wie können wir dir <span className="stroke">helfen?</span>{" "}
             </h1>
             <p>
               An diesen Zeiten erreichst du uns am besten an folgenden tagen und

@@ -24,6 +24,7 @@ const Header = () => (
         align-items: center;
         padding: 10px 20px;
         background-color: #000;
+        height: 10vh;
       }
       #Header h2 {
         color: white;
