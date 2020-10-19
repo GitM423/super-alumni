@@ -70,6 +70,7 @@ app.use("/api/orders", require("./routes/order.route"));
 app.use("/api/contacts", require("./routes/contact.route"));
 app.use("/api/filters", require("./routes/filter.route"));
 app.use("/auth", require("./routes/auth.route"));
+app.use("/api/profiles", require("./routes/profile.route"));
 
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("client/build"));

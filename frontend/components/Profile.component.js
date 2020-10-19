@@ -1,61 +1,57 @@
 import React, { Component } from "react";
-
-// import ProfileInfo from "./profile/ProfileInfo.component";
-// import ProfileEdit from "./profile/ProfileEdit.component";
+import ProfileInfo from "./profile//ProfileInfo.component";
+import ProfileEdit from "./profile//ProfileEdit.component";
 
 class Profile extends Component {
-  state = { profileOption: "selection" };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      profileOption: props.profileOption,
+      profileType: "",
+      profile: props.profile
+    };
+  }
+
+  handleProfileSelectionType(profileType) {
+    this.setState({ profileOption: "edit", profileType: profileType })
+  }
+
   render() {
     return (
       <div id="profile">
         {this.state.profileOption === "selection" ? (
           <main>
+            <div className="vertical-text">Start</div>
             <div className="left">
-              <button className="btn btn-black">Entwickler</button>
+              <button
+                onClick={() => this.handleProfileSelectionType("developer")}
+                className="btn btn-black"
+              >
+                Entwickler
+              </button>
             </div>
             <div className="right">
-              <button className="btn btn-green">Kunde</button>
+              <button
+                onClick={() => this.handleProfileSelectionType("client")}
+                className="btn btn-green"
+              >
+                Kunde
+              </button>
             </div>
           </main>
         ) : this.state.profileOption === "info" ? (
-          <ProfileInfo />
+          <ProfileInfo profile={this.state.profile} />
         ) : this.state.profileOption === "edit" ? (
-          <ProfileEdit />
+              <ProfileEdit profile={this.state.profile} profileType={this.state.profileType} />
         ) : (
           <div>Error</div>
         )}
 
-        <div>
-          <div className="vertical-text">Start</div>
-          <div className="middle">
-            <input
-              className="btn btn-purple"
-              type="submit"
-              value="Submit"
-            ></input>
-          </div>
-        </div>
-
         <style jsx>
           {`
-            @font-face {
-              font-family: "neue-machina-light";
-              src: url("../font/neue-machina-light.otf") format("opentype");
-            }
-            @font-face {
-              font-family: "neue-machina-regular";
-              src: url("../font/neue-machina-regular.otf") format("opentype");
-            }
-            body {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-            }
-            header {
-              height: 5vh;
-            }
             main {
-              height: 95vh;
+              height: 100vh;
               display: grid;
               grid-template-columns: 1fr 1fr;
               font-family: "neue-machina-light";
@@ -82,10 +78,15 @@ class Profile extends Component {
               -webkit-text-fill-color: white;
               font-family: "neue-machina-light", sans-serif;
             }
-            .middle {
-              position: absolute;
-              top: 75%;
-              left: 43%;
+            @media (min-width: 768px) and (max-width: 1024px) {
+              main {
+                grid-template-columns: 1fr;
+              }
+            }
+            @media (min-width: 320px) and (max-width: 767px) {
+              main {
+                grid-template-columns: 1fr;
+              }
             }
           `}
         </style>
@@ -95,33 +96,3 @@ class Profile extends Component {
 }
 
 export default Profile;
-
-// class ProfileChoice extends Component {
-//     state = {}
-//     render() {
-//         return (
-//             <div id="profile">
-//                 <header></header>
-
-//                 <main id="profile-choice">
-//                     <div className="left">
-//                         <a className="btn btn-black" href="#">Entwickler</a>
-//                     </div>
-
-//                     <div className="right">
-//                         <a className="btn btn-green" href="#">Kunde</a>
-//                     </div>
-//                 </main>
-
-//                 <div>
-//                     <div className="vertical-text">Start</div>
-//                     <div className="middle">
-//                         <input className="btn btn-purple" type="submit" value="Submit">
-//     </div>
-//                     </div>
-//                 </div>
-//          );
-//     }
-// }
-
-// export default ProfileChoice;

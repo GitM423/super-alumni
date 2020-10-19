@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const alumniSchema = new Schema({
-  firstName: { type: String },
-  lastName: { type: String },
-  email: { type: String },
+  displayName: { type: String, required: true },
+  email: { type: String, required: true },
+
   title: { type: String },
   description: { type: String },
   githubUrl: { type: String },

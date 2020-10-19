@@ -9,6 +9,8 @@ const userSchema = new Schema({
   googleId: { type: String },
   imageUrl: { type: String },
 
+  profileType: { type: String },
+
   title: { type: String },
   description: { type: String },
   githubUrl: { type: String },
