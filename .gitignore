@@ -5,5 +5,3 @@ node_modules/
 config/keys.config.js
 context/
 
-.env.local
-.env.production

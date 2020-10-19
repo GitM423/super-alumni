@@ -31,10 +31,16 @@ class Login extends Component {
 
     // axios.defaults.withCredentials = true;
     axios
-      .post("http://localhost:5000/auth/login", {
-        email: this.state.email,
-        password: this.state.password,
-      })
+      .post(
+        "http://localhost:5000/auth/login",
+        {
+          email: this.state.email,
+          password: this.state.password,
+        }
+        // {
+        //   withCredentials: true,
+        // }
+      )
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data);

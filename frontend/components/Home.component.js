@@ -1,5 +1,4 @@
 import Header from "../components/essentials/Header.component";
-import Contact from "../components/home/Contact.component";
 import ScrollArrow from "../components/essentials/ScrollArrow.component";
 import SocialMedia from "../components/essentials/SocialMedia.component";
 
@@ -65,8 +64,6 @@ const Home = () => {
         </article>
         <SocialMedia />
       </section>
-
-      <Contact />
 
       <style jsx>
         {`
