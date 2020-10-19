@@ -1,5 +1,4 @@
 import Header from "../components/essentials/Header.component";
-import Contact from "../components/home/Contact.component";
 
 import ScrollArrow from "../components/essentials/ScrollArrow.component";
 
@@ -54,8 +53,6 @@ const Home = () => {
           <div className="HeroLine"></div>
         </article>
       </section>
-
-      <Contact />
 
       <style jsx>
         {`

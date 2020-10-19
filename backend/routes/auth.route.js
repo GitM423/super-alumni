@@ -111,11 +111,11 @@ router.post("/login", (req, res, next) => {
         return next(err);
       }
 
-      // const body = { _id: user.id, email: user.email };
+      const body = { _id: user.id, email: user.email };
 
-      // const token = jwt.sign({ user: body }, process.env.JWT_SECRET);
-      // return res.json({ token, status: "ok", msg: [{ msg: "Logged In" }] });
-      return res.send({ status: "ok", msg: [{ msg: "Logged In" }] });
+      const token = jwt.sign({ user: body }, process.env.JWT_SECRET);
+      return res.json({ token, status: "ok", msg: [{ msg: "Logged In" }] });
+      // return res.send({ status: "ok", msg: [{ msg: "Logged In" }] });
     });
   })(req, res, next);
 });
