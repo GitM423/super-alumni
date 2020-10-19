@@ -20,25 +20,6 @@ class Contact extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   axios
-  //     .get("http://localhost:5000/api/contact")
-  //     .then((response) => {
-  //       console.log("Data: ", response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   axios
-  //     .post("")
-  //     .then((response) => {
-  //       // console.log("Data: ", response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
-
   onChangeFirstName(e) {
     this.setState({ firstName: e.target.value });
   }
@@ -65,7 +46,8 @@ class Contact extends React.Component {
       email: this.state.email,
       phoneNumber: this.state.phoneNumber,
       message: this.state.message,
-    });
+    })
+      // .then();
     window.location.reload(false);
   }
 
