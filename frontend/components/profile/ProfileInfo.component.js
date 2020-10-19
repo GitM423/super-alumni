@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import Link from 'next/link'
 
 class ProfileInfo extends Component {
 
@@ -27,23 +28,27 @@ class ProfileInfo extends Component {
   render() {
     return (
       <main id="profile-info">
+
         <section>
-          <div className="animation-wrap">
+          {/* <div className="animation-wrap">
             <div className="vertical-text-name">
-              <div className="scrolling">{this.props.profile.displayName}</div>
+              <div className="scrolling name">{this.props.profile.displayName}</div>
             </div>
-          </div>
+          </div> */}
+          <h1>{this.props.profile.displayName}</h1>
           <figure>
-            <figcaption>{this.props.profile.field}</figcaption>
+            <figcaption>{this.props.profile.title}</figcaption>
             <img
               className="profile-photo"
               src={this.props.profile.imageUrl}
               alt=""
             ></img>
             <div className="social-wrap">
-              <img src="github.png" alt=""></img>
-              <img src="github.png" alt=""></img>
-              <img src="github.png" alt=""></img>
+              <a href={"mailto:" + this.props.profile.email} get="_blank"><img src="Mail.png" alt=""></img></a>
+              <a href={this.props.profile.githubUrl} target="_blank"><img src="github.png" alt=""></img></a>
+              <a href={this.props.profile.linkedinUrl} target="_blank">
+                <img src="Linkedin.png" alt=""></img>
+              </a>
             </div>
           </figure>
         </section>
@@ -54,8 +59,8 @@ class ProfileInfo extends Component {
             <div className="filter-tag">tag2</div>
             <div className="filter-tag">tag3</div>
           </div>
-          <h2>{this.props.profile.displayName}</h2>
-          <p>{this.props.profile.about}</p>
+          {/* <h2>{this.props.profile.displayName}</h2> */}
+          <p>{this.props.profile.description}</p>
           <h6>Berufserfahrung: {this.props.profile.experience} </h6>
           <div className="wrap">
             <div className="wrap-tags">
@@ -80,7 +85,7 @@ class ProfileInfo extends Component {
         <style jsx>
           {`
             main {
-              height: 100vh;
+              height: 90vh;
               display: grid;
               grid-template-columns: 1fr 1fr;
               font-family: "neue-machina-light", sans-serif;
@@ -102,6 +107,17 @@ class ProfileInfo extends Component {
               object-fit: cover;
               margin: 0.2em 0;
             }
+            main h1 {
+              padding: 0.5em 0;
+              font-family: "neue-machina-light", sans-serif;
+              font-weight: 100;
+              font-size: 3em;
+              transform-origin: left center;
+              -webkit-text-stroke: 2px #000000;
+              -webkit-text-fill-color: #5d3ede;
+              width: 80%;
+              text-align: center;
+            }
             main figcaption {
               font-size: 0.8em;
               padding: 0.5em 0;
@@ -114,8 +130,9 @@ class ProfileInfo extends Component {
               align-self: flex-end;
             }
             main .social-wrap img {
-              height: 2em;
-              width: 2em;
+              height: 1.7em;
+              width: 1.7em;
+              margin: 0.1em;
             }
             main section:nth-of-type(2) {
               background: white;
@@ -126,7 +143,8 @@ class ProfileInfo extends Component {
             }
             main section:nth-of-type(2) p {
               line-height: 1.8;
-              padding-bottom: 1em;
+              padding: 1em 0;
+              font-family: "neue-machina-light", sans-serif;
             }
             main section:nth-of-type(2) h6 {
               font-size: 1em;
@@ -137,35 +155,35 @@ class ProfileInfo extends Component {
               padding: 1em 0;
             }
 
-            /* animated letters */
-            .vertical-text-name {
-              font-family: "neue-machina-regular", sans-serif;
-              font-size: 4em;
-              position: absolute;
-              bottom: 0%;
-              left: 50%;
-              transform: rotate(-90deg);
-              transform-origin: left center;
-              -webkit-text-stroke: 2px #000000;
-              -webkit-text-fill-color: white;
-              display: flex;
-              flex-wrap: wrap;
-              text-align: center;
-            }
-            .animation-wrap {
-              overflow: hidden;
-            }
-            .scrolling {
-              animation: marquee 15s linear infinite;
-            }
-            @keyframes marquee {
-              from {
-                transform: translateX(135%);
-              }
-              to {
-                transform: translateX(-110%);
-              }
-            }
+            // /* animated letters */
+            // .vertical-text-name {
+            //   font-family: "neue-machina-regular", sans-serif;
+            //   font-size: 4em;
+            //   position: absolute;
+            //   height: 100vh;
+            //   // top: 50vh;
+            //   left: 50%;
+            //   transform: rotate(-90deg);
+            //   transform-origin: left center;
+            //   -webkit-text-stroke: 2px #000000;
+            //   -webkit-text-fill-color: white;
+            // }
+         
+            // .animation-wrap {
+            //   overflow: hidden;
+            // }
+            // .scrolling {
+            //   animation: marquee 15s linear infinite;
+            // }
+            // @keyframes marquee {
+            //   from {
+            //     transform: translateX(135%);
+            //   }
+            //   to {
+            //     transform: translateX(-110%);
+            //   }
+            // }
+
             .filter-tag {
               display: inline-block;
               padding: 0.3rem 0.6rem;
@@ -173,6 +191,7 @@ class ProfileInfo extends Component {
               border: 1px solid #99879d;
               color: #99879d;
               margin: 0.1em;
+              transition: 0.5s all;
             }
             .filter-tag:hover {
               background: #99879d80;
@@ -206,6 +225,10 @@ class ProfileInfo extends Component {
               outline: none;
               cursor: pointer;
               margin: 0.3em;
+              transition: 0.5s all;
+            }
+            .delete-btn:hover, .edit-btn:hover{
+              transform: scale(0.9)
             }
 
             @media (min-width: 768px) and (max-width: 1024px) {
@@ -215,7 +238,7 @@ class ProfileInfo extends Component {
                 gap: 1em;
               }
               main section:nth-of-type(1) {
-                padding: 2em 5%;
+                padding: 3em;
               }
               main .profile-photo {
                 width: 20em;
@@ -244,7 +267,7 @@ class ProfileInfo extends Component {
                 gap: 1em;
               }
               main section:nth-of-type(1) {
-                padding: 2em 0;
+                padding: 3em;
               }
               main section figure {
                 display: flex;

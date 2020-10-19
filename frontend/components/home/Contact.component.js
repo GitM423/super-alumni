@@ -47,7 +47,6 @@ class Contact extends React.Component {
       phoneNumber: this.state.phoneNumber,
       message: this.state.message,
     })
-      // .then();
     window.location.reload(false);
   }
 
@@ -126,7 +125,7 @@ class Contact extends React.Component {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3em;
-            padding: 12% 8%;
+            padding: 10% 8%;
           }
           main article {
             color: #3dd7ac;

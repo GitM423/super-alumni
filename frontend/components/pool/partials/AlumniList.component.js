@@ -54,24 +54,24 @@ class AlumniList extends Component {
         {this.state.alumniListLoaded ? this.alumniList() : this.loadList()}
 
         <style jsx>{`
-          .alumni-list {
+          section {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 7rem;
           }
-
-          @media only screen and (max-width: 1440px) {
-            .alumni-list {
+          @media (min-width: 768px) and (max-width: 1024px) {
+            section {
               grid-template-columns: 1fr 1fr;
+              gap: 1em;
+             
             }
           }
-
-          /* mobile */
-          @media only screen and (max-width: 767px) {
-            .alumni-list {
-              grid-template-columns: 1fr;
+            @media (min-width: 320px) and (max-width: 767px){
+              section {
+                grid-template-columns: 1fr;
+                gap: 1em;
+              }
             }
-          }
         `}</style>
       </section>
     );
