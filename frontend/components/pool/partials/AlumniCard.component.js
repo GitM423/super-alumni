@@ -128,14 +128,14 @@ class AlumniCard extends Component {
             align-items: center;
             object-fit: contain;
             overflow: hidden;
-            max-height: 20rem;
-            max-width: 100%;
+            // max-height: 20rem;
+            // max-width: 100%;
           }
-          .alumni-card img {
-            width: 25em;
-            height: 25em;
-            object-fit: cover;
-          }
+          // .alumni-card img {
+          //   width: 20em;
+          //   height: 20em;
+          //   object-fit: cover;
+          // }
           .alumni-card-description h2 {
             padding: 1rem 0;
             font-size: 1.5em;
@@ -162,7 +162,7 @@ class AlumniCard extends Component {
           }
           figure img {
             width: 100%;
-            height: 60vh;
+            height: 50vh;
             object-fit: cover;
             margin: 0.2em 0;
           }
@@ -189,8 +189,12 @@ class AlumniCard extends Component {
               align-self: flex-end;
             }
             figure img {
-              height: 70vh;
+              height: 30vh;
             }
+            .alumni-card-description p {
+              font-size: 0.9em;
+            }
+          }
             @media (min-width: 320px) and (max-width: 767px) {
               figure {
                 display: flex;
@@ -202,10 +206,12 @@ class AlumniCard extends Component {
                 align-self: flex-start;
               }
               figure img {
-                height: 70vh;
+                height: 40vh;
+              }
+              .alumni-card-description p {
+                font-size: 0.9em;
               }
             }
-          }
         `}</style>
         {/* </article> */}
       </figure>

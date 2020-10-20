@@ -5,7 +5,7 @@ import { useRouter, withRouter, location } from "next/router";
 
 import FiltersSearch from "./essentials/FiltersSearch.component";
 import FilterTag from "./essentials/FilterTag.component";
-import PoolFilters from "./pool/partials/PoolFilters.component";
+import FiltersPool from "./pool/partials/FiltersPool.component";
 
 import AlumniList from "./pool/partials/AlumniList.component";
 import OrderList from "./pool/partials/OrdersList.component";
@@ -119,7 +119,7 @@ class Pool extends Component {
                 Go To Orders Pool
               </button>
 
-              <PoolFilters
+              <FiltersPool
                 filtersData={this.state.filtersData}
                 activeFilterTags={this.state.activeFilterTags}
                 toggleFilters={this.toggleFilters}
@@ -132,9 +132,10 @@ class Pool extends Component {
                   common goal - <span>learn to code</span>.
                   <br />
                   The Super Alumni helps you stay connected to SuperCode, each
-                  other, and to the potential employers. Check out the list of
-                  all former SuperCode students and connect with your
-                  colleagues!
+                  other, and to the potential employers.
+                  <br />
+                  Check out the list of all former SuperCode students and
+                  connect with your colleagues!
                 </p>
               </div>
             </section>
@@ -153,7 +154,7 @@ class Pool extends Component {
                 Go To Super Alumni Pool
               </button>
 
-              <PoolFilters
+              <FiltersPool
                 filtersData={this.state.filtersData}
                 activeFilterTags={this.state.activeFilterTags}
                 toggleFilters={this.toggleFilters}
@@ -202,8 +203,8 @@ class Pool extends Component {
           #pool .hero .description {
             // max-width: 850px;
             // padding: 2rem 0 3rem 0;
+            width: 80%;
           }
-
           #pool .hero .description p {
             font-size: 1.1rem;
             font-weigth: 100;
@@ -235,6 +236,12 @@ class Pool extends Component {
           @media (min-width: 320px) and (max-width: 767px) {
             #pool {
               padding: 2rem;
+            }
+            #pool .hero .description p {
+              font-size: 1em;
+            }
+            #pool .hero .description {
+              width: 100%;
             }
           }
         `}</style>
