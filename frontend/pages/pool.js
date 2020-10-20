@@ -36,6 +36,7 @@ Pool.getInitialProps = async (ctx) => {
       });
       ctx.res.end();
     }
+    return {};
   }
 };
 

@@ -25,7 +25,6 @@ Profile.getInitialProps = async (ctx) => {
   try {
     // console.log(ctx);
     console.log(ctx.query);
-    const pid = "5f8d8c6d1b5f44f128115bbb";
     // console.log(query);
 
     const { profileOption } = ctx.query;
@@ -36,13 +35,13 @@ Profile.getInitialProps = async (ctx) => {
     );
     return { profile: response.data, profileOption: profileOption };
   } catch (error) {
-    // console.log(error);
-    // if (ctx.res) {
-    //   ctx.res.writeHead(302, {
-    //     Location: "/login",
-    //   });
-    //   ctx.res.end();
-    // }
+    console.log(error);
+    if (ctx.res) {
+      ctx.res.writeHead(302, {
+        Location: "/pool",
+      });
+      ctx.res.end();
+    }
   }
 };
 
