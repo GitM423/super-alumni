@@ -24,7 +24,7 @@ Profile.getInitialProps = async ({ query }) => {
     const { profileOption } = query;
     // console.log(process.env)
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/profiles/jf@jf`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/profiles/cody@cody.cody`
     );
     return { profile: response.data, profileOption: profileOption };
   } catch (error) {

@@ -73,7 +73,7 @@ class Pool extends Component {
     this.props.router.push("/pool", undefined, { shallow: true });
   }
 
-  resultCounter() { }
+  resultCounter() {}
 
   render() {
     return (
@@ -124,10 +124,14 @@ class Pool extends Component {
 
               <div className="description">
                 <p>
-                  Coming from all walks of life, united in one place with the common goal -  <span>learn to code</span>.
-                        <br />
-                        The Super Alumni helps you stay connected to SuperCode, each other, and to the potential employers.
-                        Check out the list of all former SuperCode students and connect with your colleagues!
+                  Coming from all walks of life, united in one place with the
+                  common goal - <span>learn to code</span>.
+                  <br />
+                  The Super Alumni helps you stay connected to SuperCode, each
+                  other, and to the potential employers.
+                  <br />
+                  Check out the list of all former SuperCode students and
+                  connect with your colleagues!
                 </p>
               </div>
             </section>
@@ -155,17 +159,18 @@ class Pool extends Component {
 
               <div className="description">
                 <p>
-                         Explore opportunities and check out the list of all active job postings and company profiles. 
-                         <br/>
-                         Good luck!
+                  Explore opportunities and check out the list of all active job
+                  postings and company profiles.
+                  <br />
+                  Good luck!
                 </p>
               </div>
             </section>
             <OrderList activeFilterTags={this.state.activeFilterTags} />
           </div>
         ) : (
-                    <div>Error</div>
-                  )}
+          <div>Error</div>
+        )}
 
         <style jsx>{`
           #pool {
@@ -194,8 +199,8 @@ class Pool extends Component {
           #pool .hero .description {
             // max-width: 850px;
             // padding: 2rem 0 3rem 0;
+            width: 80%;
           }
-
           #pool .hero .description p {
             font-size: 1.1rem;
             font-weigth: 100;
@@ -206,7 +211,6 @@ class Pool extends Component {
           }
           #pool .hero .description p span {
             font-family: "neue-machina-regular", sans-serif;
-            
           }
 
           // /* ---------------STROKE--------------- */
@@ -216,7 +220,7 @@ class Pool extends Component {
             -webkit-text-fill-color: #ffffff;
           }
 
-          @media (min-width: 768px) and (max-width: 1024px){
+          @media (min-width: 768px) and (max-width: 1024px) {
             #pool {
               padding: 3rem 2rem;
             }
@@ -225,9 +229,15 @@ class Pool extends Component {
               padding: 2rem 0 1rem 0;
             }
           }
-          @media (min-width: 320px) and (max-width: 767px){
+          @media (min-width: 320px) and (max-width: 767px) {
             #pool {
               padding: 2rem;
+            }
+            #pool .hero .description p {
+              font-size: 1em;
+            }
+            #pool .hero .description {
+              width: 100%;
             }
           }
         `}</style>

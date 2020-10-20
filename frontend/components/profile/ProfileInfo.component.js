@@ -28,14 +28,20 @@ class ProfileInfo extends Component {
   render() {
     return (
       <main id="profile-info">
+         
 
         <section>
+          {/* <div className="wrapDiv">
+            <h1>{this.props.profile.displayName}</h1>
+          </div> */}
+
+
           {/* <div className="animation-wrap">
             <div className="vertical-text-name">
               <div className="scrolling name">{this.props.profile.displayName}</div>
             </div>
           </div> */}
-          <h1>{this.props.profile.displayName}</h1>
+          <h1 className="visible">{this.props.profile.displayName}</h1>
           <figure>
             <figcaption>{this.props.profile.title}</figcaption>
             <img
@@ -51,6 +57,7 @@ class ProfileInfo extends Component {
               </a>
             </div>
           </figure>
+          <h1 className="invisible">Easter Egg :)</h1>
         </section>
 
         <section>
@@ -107,17 +114,20 @@ class ProfileInfo extends Component {
               object-fit: cover;
               margin: 0.2em 0;
             }
-            main h1 {
+            main .visible {
               padding: 0.5em 0;
-              font-family: "neue-machina-light", sans-serif;
+              font-family: "neue-machina-regular", sans-serif;
               font-weight: 100;
               font-size: 3em;
               transform-origin: left center;
-              -webkit-text-stroke: 2px #000000;
-              -webkit-text-fill-color: #5d3ede;
+              // -webkit-text-stroke: 2px #000000;
+              // -webkit-text-fill-color: #5d3ede;
+              color: #04c35c;
               width: 80%;
               text-align: center;
             }
+            
+
             main figcaption {
               font-size: 0.8em;
               padding: 0.5em 0;
@@ -133,6 +143,10 @@ class ProfileInfo extends Component {
               height: 1.7em;
               width: 1.7em;
               margin: 0.1em;
+              transition: all 0.5s;
+            }
+            main .social-wrap img:hover {
+              transform: scale(0.9);
             }
             main section:nth-of-type(2) {
               background: white;
@@ -229,6 +243,13 @@ class ProfileInfo extends Component {
             }
             .delete-btn:hover, .edit-btn:hover{
               transform: scale(0.9)
+            }
+            main .invisible {
+              color: transparent;
+              padding: 0.5em 0;
+              font-family: "neue-machina-regular", sans-serif;
+              font-weight: 100;
+              font-size: 3em;
             }
 
             @media (min-width: 768px) and (max-width: 1024px) {

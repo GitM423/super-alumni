@@ -77,6 +77,7 @@ class PoolFilters extends Component {
         <style jsx>{`
           h2 {
             font-size: 1.2em;
+            padding-bottom: 0.2em;
           }
           .filters-list {
             padding: 2rem 0;
