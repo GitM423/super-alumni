@@ -18,8 +18,9 @@ const Home = () => {
         <article className="SuperAlumniText">
           <h1>super alumni</h1>
           <h3>
-            Army had half a day. Bad news. Andy Griffith <br /> turned us down.
-            He didn't like his trailer.
+            Join alumni, members and friends of the SuperCode community. 
+             <br/>
+            Sign up today, make a profile and stay in touch!
           </h3>
         </article>
 
@@ -132,6 +133,7 @@ const Home = () => {
             font-size: 24px;
             letter-spacing: 2.5px;
             text-align: center;
+            padding-top: 1em;
           }
           .ScrollForMore {
             display: flex;

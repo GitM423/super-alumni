@@ -16,7 +16,7 @@ class ProfileEdit extends Component {
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeSkills = this.onChangeSkills.bind(this);
     this.onChangeExperience = this.onChangeExperience.bind(this);
-    this.onChangeAbout = this.onChangeAbout.bind(this);
+    this.onChangeDescription = this.onChangeDescription.bind(this);
 
     this.state = {
       profileType: props.profile?.profileType ?? props.profileType,
@@ -29,7 +29,7 @@ class ProfileEdit extends Component {
       field: props.profile?.field,
       skills: props.profile?.skills,
       experience: props.profile?.experience,
-      about: props.profile?.about,
+      description: props.profile?.description,
       passedInProfile: props.profile
     };
 
@@ -45,7 +45,8 @@ class ProfileEdit extends Component {
   onChangeField = (e) => this.setState({ field: e.target.value });
   onChangeSkills = (e) => this.setState({ skills: e.target.value });
   onChangeExperience = (e) => this.setState({ experience: e.target.value });
-  onChangeAbout = (e) => this.setState({ about: e.target.value });
+  onChangeDescription = (e) => this.setState({ description: e.target.value });
+  onChangeTitle = (e) => this.setState({ title: e.target.value });
 
   onSubmitForm(e) {
     e.preventDefault();
@@ -60,7 +61,8 @@ class ProfileEdit extends Component {
       field: this.state.field,
       skills: this.state.skills,
       experience: this.state.experience,
-      about: this.state.about,
+      description: this.state.description,
+      title: this.state.title,
       profileType: this.state.profileType
     }
 
@@ -123,18 +125,18 @@ class ProfileEdit extends Component {
             </div>
 
             <input
-              value={this.state.field}
+              value={this.state.title}
               type="text"
-              placeholder="Job field"
-              onChange={this.onChangeField}
+              placeholder="Job title"
+              onChange={this.onChangeTitle}
             ></input>
             <textarea
-              value={this.state.about}
+              value={this.state.description}
               id=""
               cols="30"
               rows="10"
-              placeholder="About"
-              onChange={this.onChangeAbout}
+              placeholder="Description"
+              onChange={this.onChangeDescription}
             ></textarea>
 
             <div>
@@ -193,7 +195,7 @@ class ProfileEdit extends Component {
         <style jsx>
           {`
             form {
-              height: 100vh;
+              height: 90vh;
               display: grid;
               grid-template-columns: 1fr 1fr;
               font-family: "neue-machina-light", sans-serif;

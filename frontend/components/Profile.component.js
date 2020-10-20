@@ -51,7 +51,7 @@ class Profile extends Component {
         <style jsx>
           {`
             main {
-              height: 100vh;
+              height: 90vh;
               display: grid;
               grid-template-columns: 1fr 1fr;
               font-family: "neue-machina-light";

@@ -55,7 +55,7 @@ class OrdersList extends Component {
           .orders-list {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 5%;
+            gap: 5em;
           }
         `}</style>
       </section>
