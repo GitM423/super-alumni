@@ -1,10 +1,11 @@
 import Header from "../components/essentials/Header.component";
 import ScrollArrow from "../components/essentials/ScrollArrow.component";
 import SocialMedia from "../components/essentials/SocialMedia.component";
-
+import Footer from "../components/essentials/Footer.component";
+import Link from "next/link";
 const Home = () => {
   return (
-    <div>
+    <div className="Homee">
       {/* Home Seite / Landing Page 1 */}
       <Header />
       <section id="Home">
@@ -30,7 +31,7 @@ const Home = () => {
           <div>
             <ScrollArrow />
           </div>
-          <div>
+          <div className="SocialMediaHome">
             <SocialMedia />
           </div>
         </article>
@@ -40,22 +41,38 @@ const Home = () => {
         <article className="HeroArticle">
           <div className="HeroAbout">
             <p>01</p>
-            <a href="">About</a>
-            <img className="ImageAboutHover1" src="/01.png" alt="" />
+            <Link href="">
+              <a> About</a>
+            </Link>
+            <img className="ImageAboutHover1" src="/about.png" alt="" />
           </div>
           <div className="HeroSuper">
             <p>02</p>
-            <a href="">Super Alumni</a>
-            <img className="ImageSuperHover2" src="/02.png" alt="" />
+            <Link href="/pool">
+              <a>Super Alumni</a>
+            </Link>
+            <img
+              className="ImageSuperHover2"
+              src="/superalumnipool.png"
+              alt=""
+            />
           </div>
           <div className="HeroUnternehmen">
             <p>03</p>
-            <a href="">Unternehmen</a>
-            <img className="ImageUnternehmenHover3" src="/03.png" alt="" />
+            <Link href="/pool">
+              <a>Unternehmen</a>
+            </Link>
+            <img
+              className="ImageUnternehmenHover3"
+              src="/orderpool.png"
+              alt=""
+            />
           </div>
           <div className="HeroContact">
             <p>04</p>
-            <a href="">Contact us</a>
+            <Link href="/contact">
+              <a>Contact us</a>
+            </Link>
           </div>
         </article>
         {/* Hero Email us */}
@@ -63,9 +80,11 @@ const Home = () => {
           <p>Email us, we need a coffee</p>
           <div className="HeroLine"></div>
         </article>
-        <SocialMedia />
+        <div className="SocialBottom">
+          <SocialMedia />
+        </div>
       </section>
-
+      <Footer />
       <style jsx>
         {`
           #Home {
@@ -88,8 +107,7 @@ const Home = () => {
             align-items: baseline;
             position: absolute;
             top: 20%;
-            left: 21%;
-            // transform: translate(-60%, -50%);
+            left: 22%;
           }
           .HomeSuperAlumni img:nth-child(2) {
             margin-top: -3%;
@@ -100,8 +118,7 @@ const Home = () => {
           .SuperAlumniText {
             position: absolute;
             top: 40%;
-            left: 24%;
-            // transform: translate(-50%, -50%);
+            left: 25%;
           }
           .SuperAlumniText > h1 {
             color: rgba(61, 215, 172, 1);
@@ -124,12 +141,8 @@ const Home = () => {
             align-items: center;
             color: #fff;
             padding: 500px 50px 0 50px;
-            // position: absolute;
-            // bottom: -5%;
-            // left: 50%;
-            // transform: translate(-50%, -50%);
           }
-          .ScrollForMore > p {
+          .MadeBySuperAlumni > p {
             font-size: 13px;
           }
           .MadeBySuperAlumni {
@@ -138,7 +151,7 @@ const Home = () => {
           }
 
           #Hero {
-            height: 150vh;
+            height: 130vh;
             background-color: #fff;
             font-family: "neue-machina-light", sans-serif;
             margin-left: 200px;
@@ -164,9 +177,7 @@ const Home = () => {
           }
 
           .ImageAboutHover1 {
-            height: 500px;
-            width: 400px;
-            object-fit: cover;
+            width: 40%;
             position: absolute;
             right: 50px;
             // top: 90%;
@@ -176,9 +187,7 @@ const Home = () => {
             display: block;
           }
           .ImageSuperHover2 {
-            height: 500px;
-            width: 400px;
-            object-fit: cover;
+            width: 40%;
             position: absolute;
             right: 50px;
             top: 130%;
@@ -189,9 +198,7 @@ const Home = () => {
           }
 
           .ImageUnternehmenHover3 {
-            height: 500px;
-            width: 400px;
-            object-fit: cover;
+            width: 40%;
             position: absolute;
             right: 50px;
             top: 150%;
@@ -229,6 +236,121 @@ const Home = () => {
             height: 2px;
             background-color: #000;
             margin-top: 20px;
+          }
+
+          /* tablet */
+          @media (min-width: 768px) and (max-width: 1024px) {
+            .HomeSuperAlumni {
+              top: 23.5%;
+              left: 17%;
+            }
+            .HomeSuperAlumni img:nth-child(1) {
+              width: 75%;
+            }
+            .HomeSuperAlumni img:nth-child(2) {
+              width: 75%;
+            }
+            .HomeSuperAlumni img:nth-child(3) {
+              width: 82%;
+            }
+            .SuperAlumniText {
+              left: 21%;
+              top: 39%;
+            }
+            .SuperAlumniText > h1 {
+              font-size: 80px;
+            }
+            .SuperAlumniText > h3 {
+              font-weight: 500;
+              line-height: 38px;
+              font-size: 20px;
+              letter-spacing: 2.5px;
+              text-align: center;
+            }
+
+            #Hero {
+              margin-left: 100px;
+              height: 110vh;
+            }
+
+            .HeroArticle a {
+              font-size: 60px;
+            }
+          }
+
+          /* mobile */
+          @media (min-width: 320px) and (max-width: 767px) {
+            .HomeSuperAlumni {
+              top: 28%;
+              left: 17%;
+            }
+            .HomeSuperAlumni img:nth-child(1) {
+              width: 75%;
+            }
+            .HomeSuperAlumni img:nth-child(2) {
+              width: 75%;
+            }
+            .HomeSuperAlumni img:nth-child(3) {
+              width: 82%;
+            }
+            .SuperAlumniText {
+              left: 19%;
+              top: 34%;
+            }
+            .SuperAlumniText > h1 {
+              font-size: 30px;
+            }
+            .SuperAlumniText > h3 {
+              font-weight: 500;
+              font-size: 10px;
+              max-width: 240px;
+              text-align: center;
+            }
+            .MadeBySuperAlumni p {
+              font-size: 11px;
+            }
+            #Hero {
+              height: 90vh;
+              margin-left: 20px;
+              // display: none;
+            }
+            .HeroArticle {
+              // display: none;
+            }
+            .HeroArticle a {
+              font-size: 30px;
+            }
+            .HeroArticle p {
+              font-size: 10px;
+              transform: rotate(-90deg);
+            }
+            .HeroEmailUs {
+              margin: 20px 0 0 20px;
+              font-size: 12px;
+            }
+            .HeroEmailUs .HeroLine {
+              width: 160px;
+            }
+            .SocialMediaIcon {
+              // transform: rotate(-90deg);
+              // margin-right: -45px;
+              background: red;
+            }
+            .SocialMediaIcon .fa {
+              font-size: 15px;
+              transform: rotate(90deg);
+            }
+            .SocialMediaHome {
+              display: none;
+            }
+            .ScrollForMore {
+              display: block;
+            }
+            .MadeBySuperAlumni {
+              position: absolute;
+              top: 85%;
+              transform: rotate(-90deg);
+            }
           }
         `}
       </style>

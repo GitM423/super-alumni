@@ -21,7 +21,11 @@ class Pool extends Component {
     this.resultCounter = this.resultCounter.bind(this);
 
     this.state = {
+<<<<<<< HEAD
       poolSelection: "orders",
+=======
+      poolSelection: "",
+>>>>>>> 1baf2d65429fb4ba36f53f5fdadc91a3e57f4b4c
       filtersExpanded: true,
       filtersData: [],
       activeFilterTags: [],

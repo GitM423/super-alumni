@@ -23,6 +23,17 @@ const Footer = () => {
         .HeroFooter li:nth-child(2) {
           color: rgba(61, 215, 172, 1);
         }
+
+        @media (min-width: 320px) and (max-width: 767px) {
+          .HeroFooter li:nth-child(1) {
+            color: #fff;
+            font-size: 12px;
+          }
+          .HeroFooter li:nth-child(2) {
+            color: rgba(61, 215, 172, 1);
+            font-size: 10px;
+          }
+        }
       `}</style>
     </footer>
   );
