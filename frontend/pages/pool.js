@@ -3,11 +3,15 @@ import Layout from "../components/Layout.component";
 
 import { withRouter } from "next/router";
 
+import axios from "axios";
+
 import PoolComponent from "../components/Pool.component";
+import HeaderComponent from "../components/essentials/Header.component";
 
 const Pool = () => {
   return (
     <Layout>
+      <HeaderComponent />
       <PoolComponent />
     </Layout>
   );
@@ -25,11 +29,11 @@ Pool.getInitialProps = async (ctx) => {
     );
     return {};
   } catch (error) {
+    console.log(error);
     if (ctx.res) {
       ctx.res.writeHead(302, {
         Location: "/login",
       });
-
       ctx.res.end();
     }
   }

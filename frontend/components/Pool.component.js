@@ -21,7 +21,7 @@ class Pool extends Component {
     this.resultCounter = this.resultCounter.bind(this);
 
     this.state = {
-      poolSelection: "alumni",
+      poolSelection: "orders",
       filtersExpanded: true,
       filtersData: [],
       activeFilterTags: [],
@@ -42,7 +42,7 @@ class Pool extends Component {
 
   loadQuery() {
     let queryFilters;
-    if (this.props.router.query.filters != null) {
+    if (this.props.router.query.filters != null && "") {
       queryFilters = this.props.router.query.filters.split(" ");
     } else {
       queryFilters = [];
@@ -61,8 +61,12 @@ class Pool extends Component {
     }
 
     let joined = adjustedActive;
-
-    let searchUrl = "?filters=" + joined.join("+");
+    let searchUrl;
+    if (joined != "") {
+      searchUrl = "?filters=" + joined.join("+");
+    } else {
+      searchUrl = "#";
+    }
 
     this.setState({ activeFilterTags: adjustedActive });
     this.props.router.push(searchUrl, undefined, { shallow: true });
@@ -70,7 +74,7 @@ class Pool extends Component {
 
   resetFilters() {
     this.setState({ activeFilterTags: [] });
-    this.props.router.push("/pool", undefined, { shallow: true });
+    this.props.router.push("#", undefined, { shallow: true });
   }
 
   resultCounter() {}
@@ -124,10 +128,13 @@ class Pool extends Component {
 
               <div className="description">
                 <p>
-                  Army had half a day. Bad news. Andy Griffith turned us down.
-                  He didn't like his nice trailer. Did you enjoy your meal, Mom?
-                  You drank it fast enough. Get me a vodka rocks. And a piece of
-                  toast. Marry me.”
+                  Coming from all walks of life, united in one place with the
+                  common goal - <span>learn to code</span>.
+                  <br />
+                  The Super Alumni helps you stay connected to SuperCode, each
+                  other, and to the potential employers. Check out the list of
+                  all former SuperCode students and connect with your
+                  colleagues!
                 </p>
               </div>
             </section>
@@ -155,10 +162,10 @@ class Pool extends Component {
 
               <div className="description">
                 <p>
-                  Army had half a day. Bad news. Andy Griffith turned us down.
-                  He didn't like his nice trailer. Did you enjoy your meal, Mom?
-                  You drank it fast enough. Get me a vodka rocks. And a piece of
-                  toast. Marry me.”
+                  Explore opportunities and check out the list of all active job
+                  postings and company profiles.
+                  <br />
+                  Good luck!
                 </p>
               </div>
             </section>
@@ -170,20 +177,21 @@ class Pool extends Component {
 
         <style jsx>{`
           #pool {
-            padding: 10rem;
+            padding: 5rem 10rem;
             color: #1e252c;
           }
-
           #pool p {
             color: #4a4a4a;
           }
-
           #pool h1 {
             font-size: 5rem;
             font-family: "neue-machina-light", sans-serif;
             font-weight: 100;
+            padding-bottom: 0.2em;
           }
-
+          .hero {
+            margin-bottom: 4em;
+          }
           #pool .hero > div:first-of-type {
             display: flex;
             align-items: center;
@@ -191,17 +199,21 @@ class Pool extends Component {
           #pool .hero > div:first-of-type button {
             margin-left: 5rem;
           }
-
           #pool .hero .description {
-            max-width: 850px;
-            padding: 3rem 0;
+            // max-width: 850px;
+            // padding: 2rem 0 3rem 0;
           }
 
           #pool .hero .description p {
-            font-size: 1.6rem;
+            font-size: 1.1rem;
+            font-weigth: 100;
+            font-family: "neue-machina-light", sans-serif;
             letter-spacing: 0.1rem;
             word-spacing: 0.2rem;
             line-height: 2.5rem;
+          }
+          #pool .hero .description p span {
+            font-family: "neue-machina-regular", sans-serif;
           }
 
           // /* ---------------STROKE--------------- */
@@ -209,6 +221,21 @@ class Pool extends Component {
           .stroke {
             -webkit-text-stroke: 2px #3dd7ac;
             -webkit-text-fill-color: #ffffff;
+          }
+
+          @media (min-width: 768px) and (max-width: 1024px) {
+            #pool {
+              padding: 3rem 2rem;
+            }
+            #pool .hero .description {
+              width: 100%;
+              padding: 2rem 0 1rem 0;
+            }
+          }
+          @media (min-width: 320px) and (max-width: 767px) {
+            #pool {
+              padding: 2rem;
+            }
           }
         `}</style>
       </main>

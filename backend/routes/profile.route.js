@@ -32,11 +32,12 @@ router.route("/").put((req, res) => {
   const update = {
     email: req.body.email,
     displayName: req.body.displayName,
+    title: req.body.title,
     imageUrl: req.body.imageUrl,
 
     profileType: req.body.profileType,
 
-    description: req.body.about,
+    description: req.body.description,
     githubUrl: req.body.githubUrl,
     linkedinUrl: req.body.linkedinUrl,
     experience: req.body.experience,
@@ -63,11 +64,12 @@ router.route("/").post((req, res) => {
   const newProfile = new Profile({
     email: req.body.email,
     displayName: req.body.displayName,
+    title: req.body.title,
     imageUrl: req.body.imageUrl,
 
     profileType: req.body.profileType,
 
-    description: req.body.about,
+    description: req.body.description,
     githubUrl: req.body.githubUrl,
     linkedinUrl: req.body.linkedinUrl,
     experience: req.body.experience,
@@ -89,10 +91,8 @@ router.route("/").post((req, res) => {
 });
 
 // DELETE profile
-router.route("/:email").delete((req, res) => {
-  Profile.findOneAndDelete({ email: req.params.email }).then((result) =>
-    res.json(result)
-  );
+router.route("/:id").delete((req, res) => {
+  Profile.findByIdAndDelete(req.params.id).then((result) => res.json(result));
 });
 
 module.exports = router;
