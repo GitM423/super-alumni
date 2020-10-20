@@ -21,7 +21,7 @@ class Pool extends Component {
     this.resultCounter = this.resultCounter.bind(this);
 
     this.state = {
-      poolSelection: "alumni",
+      poolSelection: "",
       filtersExpanded: true,
       filtersData: [],
       activeFilterTags: [],

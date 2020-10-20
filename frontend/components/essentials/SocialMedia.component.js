@@ -1,14 +1,22 @@
+import Link from "next/link";
+
 const SocialMedia = () => (
   <div id="SocialMedia">
     <ul className="SocialMediaIcon SocialMediaIcon2">
       <li>
-        <a href="#" className="fa fa-facebook"></a>
+        <Link href="https://www.facebook.com/supercodegmbh/">
+          <a className="fa fa-facebook"></a>
+        </Link>
       </li>
       <li>
-        <a href="#" className="fa fa-google"></a>
+        <Link href="/contact">
+          <a className="fa fa-envelope-o"></a>
+        </Link>
       </li>
       <li>
-        <a href="#" className="fa fa-instagram"></a>
+        <Link href="">
+          <a className="fa fa-instagram"></a>
+        </Link>
       </li>
     </ul>
 
@@ -17,6 +25,7 @@ const SocialMedia = () => (
 
       .SocialMediaIcon {
         display: flex;
+        align-items: center;
         padding: 40px 0;
         list-style: none;
       }
@@ -46,9 +55,28 @@ const SocialMedia = () => (
         -webkit-text-stroke: 1px #000;
         color: #fff;
       }
-      .SocialMediaIcon .fa-google {
+      .SocialMediaIcon .fa-envelope-o {
         -webkit-text-stroke: 1px #000;
         color: #fff;
+        font-size: 28px;
+      }
+
+      @media (min-width: 320px) and (max-width: 767px) {
+        .SocialMediaIcon {
+          // transform: rotate(-90deg);
+          // margin-right: -45px;
+          display: flex;
+          justify-content: space-evenly;
+        }
+        .SocialMediaIcon .fa {
+          font-size: 20px;
+        }
+        .SocialMediaIcon li {
+          margin: 0 2%;
+        }
+        .SocialMediaIcon li:nth-child(2) {
+          padding: 0;
+        }
       }
     `}</style>
   </div>
