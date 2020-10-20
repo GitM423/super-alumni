@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+
 import { withRouter } from "next/router";
 
 import axios from "axios";
@@ -7,158 +8,41 @@ import Layout from "../components/Layout.component";
 
 import DashboardComp from "../components/Dashboard.component";
 
-class Dashboard extends Component {
-  state = {};
+import Header from "../components/essentials/Header.component";
 
-  componentWillMount() {
-    const checkLoggedIn = async () => {
-      let token = localStorage.getItem("auth-token");
-      if (token === null) {
-        localStorage.setItem("auth-token", "");
-        token = "";
-        return this.props.router.push("/login");
-      }
-      // console.log(token);
+const Dashboard = () => {
+  return (
+    <Layout>
+      <Header />
 
-      axios
-        .get("http://localhost:5000/auth/", {
-          headers: { Authorization: "Bearer " + token },
-        })
-        .then((user) =>
-          this.setState({
-            userData: {
-              token,
-              user: user.data,
-            },
-          })
-        )
-        .catch((err) => {
-          return this.props.router.push("/login");
-        });
-      // console.log(token);
-    };
+      <DashboardComp />
+    </Layout>
+  );
+};
 
-    checkLoggedIn();
-  }
-
-  render() {
-    return (
-      <Layout>
-        <DashboardComp />
-      </Layout>
+Dashboard.getInitialProps = async (ctx) => {
+  try {
+    let cookieName = "super-session=s%3A";
+    console.log("test: ", ctx.headers);
+    let cookie = ctx.req.headers.cookie.substr(
+      ctx.req.headers.cookie.indexOf(cookieName) + cookieName.length,
+      32
     );
+
+    await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/session/${cookie}`
+    );
+    return {};
+  } catch (error) {
+    console.log(error);
+    if (ctx.res) {
+      ctx.res.writeHead(302, {
+        Location: "/login",
+      });
+
+      ctx.res.end();
+    }
   }
-}
+};
 
 export default withRouter(Dashboard);
-
-// import React, { Component } from "react";
-// import { withRouter } from "next/router";
-
-// import axios from "axios";
-
-// import Layout from "../components/Layout.component";
-
-// import DashboardComp from "../components/Dashboard.component";
-
-// const Dashboard = ({ auth, profileOption }) => {
-//   if (!auth) {
-//     profileOption = "selection";
-//   } else if (auth) {
-//     profileOption = "info";
-//   }
-
-//   return (
-//     <Layout>
-//       <DashboardComp />
-//     </Layout>
-//   );
-// };
-
-// function Page({ stars }) {
-//   return <div>Next stars: {stars}</div>;
-// }
-
-// Page.getInitialProps = async (ctx) => {
-//   const res = await fetch("https://api.github.com/repos/vercel/next.js");
-//   const json = await res.json();
-//   return { stars: json.stargazers_count };
-// };
-
-// Dashboard.getInitialProps = async ({ query }) => {
-//   try {
-//     const checkLoggedIn = async () => {
-//       let token = localStorage.getItem("auth-token");
-//       if (token === null) {
-//         localStorage.setItem("auth-token", "");
-//         token = "";
-//         return this.props.router.push("/login");
-//       }
-//       console.log(token);
-
-//       axios
-//         .get("http://localhost:5000/auth/", {
-//           headers: { Authorization: "Bearer " + token },
-//         })
-//         .then((user) =>
-//           this.setState({
-//             userData: {
-//               token,
-//               user: user.data,
-//             },
-//           })
-//         )
-//         .catch((err) => {
-//           return this.props.router.push("/login");
-//         });
-//       // console.log(token);
-//     };
-
-//     checkLoggedIn();
-//   }
-// };
-
-// // class Dashboard extends Component {
-// //   state = {};
-
-// //   componentWillMount() {
-// //     const checkLoggedIn = async () => {
-// //       let token = localStorage.getItem("auth-token");
-// //       if (token === null) {
-// //         localStorage.setItem("auth-token", "");
-// //         token = "";
-// //         return this.props.router.push("/login");
-// //       }
-// //       console.log(token);
-
-// //       axios
-// //         .get("http://localhost:5000/auth/", {
-// //           headers: { Authorization: "Bearer " + token },
-// //         })
-// //         .then((user) =>
-// //           this.setState({
-// //             userData: {
-// //               token,
-// //               user: user.data,
-// //             },
-// //           })
-// //         )
-// //         .catch((err) => {
-// //           return this.props.router.push("/login");
-// //         });
-// //       // console.log(token);
-// //     };
-
-// //     checkLoggedIn();
-// //   }
-
-// //   render() {
-// //     return (
-// //       <Layout>
-// //         <DashboardComp />
-// //       </Layout>
-// //     );
-// //   }
-// // }
-
-// export default withRouter(Dashboard);

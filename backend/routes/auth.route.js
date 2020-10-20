@@ -6,8 +6,9 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 
-// User model
+// Models
 const User = require("../models/user.model");
+const Session = require("../models/session.model");
 
 // Register Handle
 router.post("/register", (req, res, next) => {
@@ -157,10 +158,10 @@ router.post("/login", (req, res, next) => {
 
 router.get(
   "/google",
-  passport.authenticate("google", { scope: ["profile"] }),
-  (req, res, next) => {
-    res.send({ status: "ok", msg: [{ msg: "test" }] });
-  }
+  passport.authenticate("google", { scope: ["profile", "email"] })
+  // (req, res, next) => {
+  //   res.send({ status: "ok", msg: [{ msg: "test" }] });
+  // }
 );
 
 //  Google Auth Callback Handle
@@ -171,7 +172,7 @@ router.get(
     failureRedirect: "http://localhost:3000/login",
   }),
   (req, res) => {
-    console.log(req.session.passport);
+    console.log(req.session.passport.user);
     // res.send({ status: "ok", msg: [{ msg: "test" }] });
     res.redirect("http://localhost:3000/dashboard");
   }
@@ -192,7 +193,7 @@ router.post(
 );
 
 router.get(
-  "/",
+  "/withToken",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     // console.log(req.user);
@@ -215,6 +216,64 @@ router.get(
     //   ();
   }
 );
+
+// Cookie Handle
+
+const checkAuth = (req, res, next) => {
+  console.log(req.params);
+  if (req.user) {
+    console.log(req.user.id);
+    console.log(req.session.passport.user);
+
+    next();
+  } else {
+    res.redirect("http://localhost:3000/login");
+  }
+};
+
+router.get("/session/:cookie", (req, res, next) => {
+  console.log(req.params.cookie);
+
+  Session.findById(req.params.cookie)
+    .then((sess) => {
+      console.log(JSON.parse(sess.session).passport.user);
+      res.json({ status: "Session active" });
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.get("/type/:cookie", (req, res, next) => {
+  console.log(req.params.cookie);
+
+  Session.findById(req.params.cookie)
+    .then((session) => {
+      console.log(JSON.parse(session.session).passport.user);
+      User.findById(JSON.parse(session.session).passport.user)
+        .then((user) => {
+          console.log(user.profileType);
+          res.json({
+            status: "ProfileType checked",
+            profileType: user.profileType,
+          });
+        })
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.get("/user/:cookie", (req, res, next) => {
+  console.log(req.params.cookie);
+
+  Session.findById(req.params.cookie)
+    .then((session) => {
+      console.log(JSON.parse(session.session).passport.user);
+      res.json({
+        status: "User varified",
+        user: JSON.parse(session.session).passport.user,
+      });
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 
 // Logout Handle
 

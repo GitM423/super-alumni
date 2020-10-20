@@ -12,11 +12,13 @@ class AlumniCard extends Component {
     return (
       <figure>
         <figcaption>{this.props.alumni.title}</figcaption>
-        <img
-          className="profile-photo"
-          src={this.props.alumni.imageURL}
-          alt=""
-        ></img>
+        <Link href={`/profile/${this.props.alumni._id}`}>
+          <img
+            className="profile-photo"
+            src={this.props.alumni.imageUrl}
+            alt=""
+          ></img>
+        </Link>
 
         {/* ******** placeholder links */}
         <div className="social-wrap">
@@ -31,10 +33,42 @@ class AlumniCard extends Component {
           </a>
         </div>
 
+        {/* real links */}
+        {/*   <div className="social-wrap">
+          {this.props.alumni.email &&
+          typeof this.props.alumni.githubUrl === String ? (
+            <Link href={this.props.alumni.email} get="_blank">
+              <a>
+                <img src="email-icon-black.png" alt=""></img>
+              </a>
+            </Link>
+          ) : (
+            {}
+          )}
+          {this.props.alumni.githubUrl &&
+          typeof this.props.alumni.githubUrl === String ? (
+            <Link href={this.props.alumni.githubUrl} get="_blank">
+              <a>
+                <img src="github-black.png" alt=""></img>
+              </a>
+            </Link>
+          ) : (
+            {}
+          )}
+          {this.props.alumni.linkedinUrl &&
+          typeof this.props.alumni.githubUrl === String ? (
+            <Link href={this.props.alumni.linkedinUrl} get="_blank">
+              <a>
+                <img src="Linkedin-black.png" alt=""></img>
+              </a>
+            </Link>
+          ) : (
+            {}
+          )}
+        </div> */}
+
         <div className="alumni-card-description">
-          <h2>
-            {this.props.alumni.firstName} {this.props.alumni.lastName}
-          </h2>
+          <h2>{this.props.alumni.displayName}</h2>
           <p>{this.props.alumni.description}</p>
         </div>
 
@@ -94,14 +128,14 @@ class AlumniCard extends Component {
             align-items: center;
             object-fit: contain;
             overflow: hidden;
-            max-height: 20rem;
-            max-width: 100%;
+            // max-height: 20rem;
+            // max-width: 100%;
           }
-          .alumni-card img {
-            width: 25em;
-            height: 25em;
-            object-fit: cover;
-          }
+          // .alumni-card img {
+          //   width: 20em;
+          //   height: 20em;
+          //   object-fit: cover;
+          // }
           .alumni-card-description h2 {
             padding: 1rem 0;
             font-size: 1.5em;
@@ -112,7 +146,6 @@ class AlumniCard extends Component {
             word-spacing: 0.2rem;
             line-height: 2rem;
             font-family: "neue-machina-light", sans-serif;
-
           }
           // .alumni-card .alumni-card-socials {
           //   display: flex;
@@ -129,7 +162,7 @@ class AlumniCard extends Component {
           }
           figure img {
             width: 100%;
-            height: 60vh;
+            height: 50vh;
             object-fit: cover;
             margin: 0.2em 0;
           }
@@ -156,8 +189,12 @@ class AlumniCard extends Component {
               align-self: flex-end;
             }
             figure img {
-              height: 70vh;
+              height: 30vh;
             }
+            .alumni-card-description p {
+              font-size: 0.9em;
+            }
+          }
             @media (min-width: 320px) and (max-width: 767px) {
               figure {
                 display: flex;
@@ -169,10 +206,12 @@ class AlumniCard extends Component {
                 align-self: flex-start;
               }
               figure img {
-                height: 70vh;
+                height: 40vh;
+              }
+              .alumni-card-description p {
+                font-size: 0.9em;
               }
             }
-          }
         `}</style>
         {/* </article> */}
       </figure>

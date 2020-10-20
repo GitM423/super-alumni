@@ -5,9 +5,12 @@ import { withRouter } from "next/router";
 
 import LoginComp from "../components/Home/Login.component";
 
+import Header from "../components/essentials/Header.component";
+
 const Pool = () => {
   return (
     <Layout>
+      <Header />
       <LoginComp />
     </Layout>
   );

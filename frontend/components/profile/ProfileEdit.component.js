@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 
 class ProfileEdit extends Component {
-
   constructor(props) {
     super(props);
 
@@ -30,10 +29,10 @@ class ProfileEdit extends Component {
       skills: props.profile?.skills,
       experience: props.profile?.experience,
       description: props.profile?.description,
-      passedInProfile: props.profile
+      passedInProfile: props.profile,
     };
 
-    console.log(props.profile)
+    console.log(props.profile);
   }
 
   onChangeDisplayName = (e) => this.setState({ displayName: e.target.value });
@@ -63,8 +62,8 @@ class ProfileEdit extends Component {
       experience: this.state.experience,
       description: this.state.description,
       title: this.state.title,
-      profileType: this.state.profileType
-    }
+      profileType: this.state.profileType,
+    };
 
     if (!this.state.passedInProfile) {
       axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/profiles`, data);
@@ -72,7 +71,7 @@ class ProfileEdit extends Component {
       axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/profiles`, data);
     }
 
-    window.location.href = "/profile"
+    window.location.href = "/profile";
   }
 
   render() {

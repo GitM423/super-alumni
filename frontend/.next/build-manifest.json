@@ -29,10 +29,17 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
+<<<<<<< HEAD
     "/contact": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/contact.js"
+=======
+    "/profile": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/profile.js"
+>>>>>>> e7f92d3c3310778a1f358c4e6f79ab458bfbde02
     ]
   },
   "ampFirstPages": []

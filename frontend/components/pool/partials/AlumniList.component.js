@@ -17,8 +17,17 @@ class AlumniList extends Component {
       .get("http://localhost:5000/api/alumni")
       .then((response) => {
         // console.log("Data: ", response);
+        let sorted = response.data.sort((a, b) => {
+          if (a.displayName.toUpperCase() < b.displayName.toUpperCase()) {
+            return -1;
+          }
+          if (a.displayName.toUpperCase() > b.displayName.toUpperCase()) {
+            return 1;
+          }
+          return 0;
+        });
         this.setState({
-          alumniList: response.data,
+          alumniList: sorted,
           alumniListLoaded: true,
         });
       })
@@ -56,22 +65,22 @@ class AlumniList extends Component {
         <style jsx>{`
           section {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 7rem;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5rem;
           }
           @media (min-width: 768px) and (max-width: 1024px) {
             section {
               grid-template-columns: 1fr 1fr;
-              gap: 1em;
-             
+              gap: 2em;
             }
           }
             @media (min-width: 320px) and (max-width: 767px){
               section {
                 grid-template-columns: 1fr;
-                gap: 1em;
+                gap: 3em;
               }
             }
+          }
         `}</style>
       </section>
     );
