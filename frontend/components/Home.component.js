@@ -5,7 +5,7 @@ import Footer from "../components/essentials/Footer.component";
 import Link from "next/link";
 const Home = () => {
   return (
-    <div className="Homee">
+    <div>
       {/* Home Seite / Landing Page 1 */}
       <Header />
       <section id="Home">
@@ -18,8 +18,8 @@ const Home = () => {
         <article className="SuperAlumniText">
           <h1>super alumni</h1>
           <h3>
-            Join alumni, members and friends of the SuperCode community. 
-             <br/>
+            Join alumni, members and friends of the SuperCode community.
+            <br />
             Sign up today, make a profile and stay in touch!
           </h3>
         </article>
@@ -130,7 +130,7 @@ const Home = () => {
             color: #fff;
             font-weight: 500;
             line-height: 38px;
-            font-size: 24px;
+            font-size: 17px;
             letter-spacing: 2.5px;
             text-align: center;
             padding-top: 1em;
@@ -151,10 +151,11 @@ const Home = () => {
           }
 
           #Hero {
-            height: 130vh;
+            // height: 130vh;
             background-color: #fff;
             font-family: "neue-machina-light", sans-serif;
             margin-left: 200px;
+            margin-bottom: 50px;
           }
           .HeroArticle {
             padding: 100px 0 0 25px;
@@ -263,7 +264,7 @@ const Home = () => {
             .SuperAlumniText > h3 {
               font-weight: 500;
               line-height: 38px;
-              font-size: 20px;
+              font-size: 13px;
               letter-spacing: 2.5px;
               text-align: center;
             }
@@ -301,8 +302,7 @@ const Home = () => {
               font-size: 30px;
             }
             .SuperAlumniText > h3 {
-              font-weight: 500;
-              font-size: 10px;
+              font-size: 0.6em;
               max-width: 240px;
               text-align: center;
             }
@@ -310,7 +310,7 @@ const Home = () => {
               font-size: 11px;
             }
             #Hero {
-              height: 90vh;
+              // height: 90vh;
               margin-left: 20px;
               // display: none;
             }
