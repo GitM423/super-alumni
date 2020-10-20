@@ -2,10 +2,28 @@ const router = require("express").Router();
 let Profile = require("../models/user.model");
 
 // GET single Profile
-router.route("/:email").get((req, res) => {
-  Profile.findOne({ email: req.params.email }).then((result) =>
-    res.json(result)
-  );
+router.route("/:id").get((req, res) => {
+  Profile.findById(req.params.id).then((result) => {
+    let profileInfo = {
+      displayName: result.displayName,
+      imageUrl: result.imageUrl,
+
+      title: result.title,
+      description: result.description,
+
+      email: result.email,
+      githubUrl: result.githubUrl,
+      linkedinUrl: result.linkedinUrl,
+
+      workingHours: result.workingHours,
+      field: result.field,
+      skills: result.skills,
+
+      experience: result.experience,
+    };
+
+    res.json(profileInfo);
+  });
 });
 
 // PUT update profile
