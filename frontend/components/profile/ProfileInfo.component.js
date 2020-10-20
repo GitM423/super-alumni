@@ -1,28 +1,29 @@
 import axios from "axios";
 import React, { Component } from "react";
-import Link from 'next/link'
+import Link from "next/link";
 
 class ProfileInfo extends Component {
-
   constructor(props) {
     super(props);
 
-    console.log(props.profile);
+    // console.log(props.profile);
 
     this.state = {
       profileOption: props.profileOption,
-      profile: props.profile
+      profile: props.profile,
     };
   }
 
   deleteProfile = (e) => {
-    axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/profiles/${this.state.profile.email}`);
+    axios.delete(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/profiles/${this.state.profile.email}`
+    );
 
-    window.location.href = "/profile"
+    window.location.href = "/profile";
   };
 
   editProfile = (e) => {
-    window.location.href = "/profile?profileOption=edit"
+    window.location.href = "/profile?profileOption=edit";
   };
 
   render() {
@@ -50,10 +51,14 @@ class ProfileInfo extends Component {
               alt=""
             ></img>
             <div className="social-wrap">
-              <a href={"mailto:" + this.props.profile.email} get="_blank"><img src="Mail.png" alt=""></img></a>
-              <a href={this.props.profile.githubUrl} target="_blank"><img src="github.png" alt=""></img></a>
+              <a href={"mailto:" + this.props.profile.email} get="_blank">
+                <img src="/Mail.png" alt=""></img>
+              </a>
+              <a href={this.props.profile.githubUrl} target="_blank">
+                <img src="/github.png" alt=""></img>
+              </a>
               <a href={this.props.profile.linkedinUrl} target="_blank">
-                <img src="Linkedin.png" alt=""></img>
+                <img src="/Linkedin.png" alt=""></img>
               </a>
             </div>
           </figure>
@@ -81,10 +86,10 @@ class ProfileInfo extends Component {
           </div>
           <div className="change-wrap">
             <button className="edit-btn" onClick={this.editProfile}>
-              <img src="edit.png" alt=""></img>
+              <img src="/edit.png" alt=""></img>
             </button>
             <button className="delete-btn" onClick={this.deleteProfile}>
-              <img src="minus.png" alt=""></img>
+              <img src="/minus.png" alt=""></img>
             </button>
           </div>
         </section>
@@ -182,7 +187,7 @@ class ProfileInfo extends Component {
             //   -webkit-text-stroke: 2px #000000;
             //   -webkit-text-fill-color: white;
             // }
-         
+
             // .animation-wrap {
             //   overflow: hidden;
             // }
@@ -233,7 +238,8 @@ class ProfileInfo extends Component {
             .change-wrap div {
               margin: 0 0.5em;
             }
-            .delete-btn, .edit-btn {
+            .delete-btn,
+            .edit-btn {
               background: none;
               border: none;
               outline: none;
@@ -241,8 +247,9 @@ class ProfileInfo extends Component {
               margin: 0.3em;
               transition: 0.5s all;
             }
-            .delete-btn:hover, .edit-btn:hover{
-              transform: scale(0.9)
+            .delete-btn:hover,
+            .edit-btn:hover {
+              transform: scale(0.9);
             }
             main .invisible {
               color: transparent;
@@ -321,7 +328,7 @@ class ProfileInfo extends Component {
         </style>
       </main>
     );
-  };
-};
+  }
+}
 
 export default ProfileInfo;

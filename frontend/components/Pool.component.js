@@ -42,7 +42,7 @@ class Pool extends Component {
 
   loadQuery() {
     let queryFilters;
-    if (this.props.router.query.filters != null) {
+    if (this.props.router.query.filters != null && "") {
       queryFilters = this.props.router.query.filters.split(" ");
     } else {
       queryFilters = [];
@@ -61,8 +61,12 @@ class Pool extends Component {
     }
 
     let joined = adjustedActive;
-
-    let searchUrl = "?filters=" + joined.join("+");
+    let searchUrl;
+    if (joined != "") {
+      searchUrl = "?filters=" + joined.join("+");
+    } else {
+      searchUrl = "#";
+    }
 
     this.setState({ activeFilterTags: adjustedActive });
     this.props.router.push(searchUrl, undefined, { shallow: true });
@@ -70,7 +74,7 @@ class Pool extends Component {
 
   resetFilters() {
     this.setState({ activeFilterTags: [] });
-    this.props.router.push("/pool", undefined, { shallow: true });
+    this.props.router.push("#", undefined, { shallow: true });
   }
 
   resultCounter() {}

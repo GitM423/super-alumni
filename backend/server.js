@@ -5,14 +5,16 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 // const path = require("path");
 
+// Passport config
+
 const passport = require("passport");
 require("./config/passport.config");
+
+// Session
 
 const cookieSession = require("cookie-session");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-
-// Passport config
 
 // Connect to DB
 
@@ -40,22 +42,23 @@ app.use(express.json());
 
 // Sessions
 
-app.use(
-  cookieSession({
-    name: "session",
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: [process.env.SESSION_SECRET],
-  })
-);
-
 // app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     store: new MongoStore({ mongooseConnection: mongoose.connection }),
+//   cookieSession({
+//     name: "cookie-session",
+//     maxAge: 24 * 60 * 60 * 1000,
+//     keys: [process.env.SESSION_SECRET],
 //   })
 // );
+
+app.use(
+  session({
+    name: "super-session",
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  })
+);
 
 // Passport middleware
 

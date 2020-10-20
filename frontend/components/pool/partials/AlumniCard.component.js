@@ -12,7 +12,13 @@ class AlumniCard extends Component {
     return (
       <figure>
         <figcaption>{this.props.alumni.title}</figcaption>
-        <img src={this.props.alumni.imageURL} alt=""></img>
+        <Link href={`/profile/${this.props.alumni._id}`}>
+          <img
+            className="profile-photo"
+            src={this.props.alumni.imageUrl}
+            alt=""
+          ></img>
+        </Link>
 
         {/* ******** placeholder links */}
         <div className="social-wrap">
@@ -27,10 +33,42 @@ class AlumniCard extends Component {
           </a>
         </div>
 
+        {/* real links */}
+        {/*   <div className="social-wrap">
+          {this.props.alumni.email &&
+          typeof this.props.alumni.githubUrl === String ? (
+            <Link href={this.props.alumni.email} get="_blank">
+              <a>
+                <img src="email-icon-black.png" alt=""></img>
+              </a>
+            </Link>
+          ) : (
+            {}
+          )}
+          {this.props.alumni.githubUrl &&
+          typeof this.props.alumni.githubUrl === String ? (
+            <Link href={this.props.alumni.githubUrl} get="_blank">
+              <a>
+                <img src="github-black.png" alt=""></img>
+              </a>
+            </Link>
+          ) : (
+            {}
+          )}
+          {this.props.alumni.linkedinUrl &&
+          typeof this.props.alumni.githubUrl === String ? (
+            <Link href={this.props.alumni.linkedinUrl} get="_blank">
+              <a>
+                <img src="Linkedin-black.png" alt=""></img>
+              </a>
+            </Link>
+          ) : (
+            {}
+          )}
+        </div> */}
+
         <div className="alumni-card-description">
-          <h2>
-            {this.props.alumni.firstName} {this.props.alumni.lastName}
-          </h2>
+          <h2>{this.props.alumni.displayName}</h2>
           <p>{this.props.alumni.description}</p>
         </div>
 

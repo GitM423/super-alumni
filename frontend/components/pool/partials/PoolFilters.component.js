@@ -117,6 +117,7 @@ class PoolFilters extends Component {
             padding: 2rem;
             border: 2px solid #99879d;
             border-radius: 2rem;
+            margin-bottom: 2rem;
           }
           .filter-category:not(:last-of-type) {
             margin-bottom: 1rem;
