@@ -29,11 +29,6 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/pool.js"
     ],
-    "/profile": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/profile.js"
-    ],
     "/profile/[pid]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
