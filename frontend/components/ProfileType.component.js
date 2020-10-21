@@ -7,6 +7,9 @@ import { withRouter } from "next/router";
 class ProfileType extends Component {
   constructor(props) {
     super(props);
+
+    console.log(props);
+
     this.handleProfileSelectionType = this.handleProfileSelectionType.bind(
       this
     );
@@ -15,7 +18,7 @@ class ProfileType extends Component {
   }
 
   handleProfileSelectionType(profileType) {
-    console.log(profileType);
+    console.log("profileType: ", profileType);
 
     const data = {
       userId: this.props.userId,
@@ -24,7 +27,7 @@ class ProfileType extends Component {
     axios
       .post("http://localhost:5000/api/profiles/updateType", data)
       .then((response) => {
-        console.log(response.data.msg);
+        console.log("msg: ", response.data.msg);
         this.props.router.push(`/profile/edit/${this.props.userId}`);
       })
       .catch((err) => {

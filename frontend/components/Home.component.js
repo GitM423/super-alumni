@@ -161,11 +161,7 @@ const Home = () => {
           }
 
           #Hero {
-<<<<<<< HEAD
             min-height: 130vh;
-=======
-            // height: 130vh;
->>>>>>> 442fadec24f2982c5bbe25ba51b2e97148538cef
             background-color: #fff;
             font-family: "neue-machina-light", sans-serif;
             margin-left: 200px;
@@ -323,10 +319,6 @@ const Home = () => {
               font-size: 11px;
             }
             #Hero {
-<<<<<<< HEAD
-=======
-              // height: 90vh;
->>>>>>> 442fadec24f2982c5bbe25ba51b2e97148538cef
               margin-left: 20px;
               // display: none;
             }

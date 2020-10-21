@@ -38,7 +38,7 @@ Profile.getInitialProps = async (ctx) => {
     } else {
       if (ctx.res) {
         ctx.res.writeHead(302, {
-          Location: "/pool",
+          Location: "/pools",
         });
         ctx.res.end();
       }

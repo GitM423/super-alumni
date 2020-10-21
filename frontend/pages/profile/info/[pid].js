@@ -29,11 +29,11 @@ ProfileInfo.getInitialProps = async (ctx) => {
     let sessionResponse = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/auth/session/${cookie}`
     );
-    console.log(sessionResponse.data);
+    // console.log(sessionResponse.data);
     let response = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/api/alumni/${ctx.query.pid}`
     );
-    console.log(response.data);
+    // console.log(response.data);
     if (ctx.query.pid === sessionResponse.data.userId) {
       return { user: response.data, activeUser: true };
     } else {
@@ -41,10 +41,12 @@ ProfileInfo.getInitialProps = async (ctx) => {
     }
   } catch (error) {
     console.log(error);
-    ctx.res.writeHead(302, {
-      Location: "/login",
-    });
-    ctx.res.end();
+    if (ctx.res) {
+      ctx.res.writeHead(302, {
+        Location: "/login",
+      });
+      ctx.res.end();
+    }
   }
 };
 

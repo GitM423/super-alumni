@@ -19,28 +19,28 @@ const ProfileEdit = (props) => {
 
 ProfileEdit.getInitialProps = async (ctx) => {
   try {
-    console.log("test");
+    // console.log("test");
 
     let cookieName = "super-session=s%3A";
     let cookie = ctx.req.headers.cookie.substr(
       ctx.req.headers.cookie.indexOf(cookieName) + cookieName.length,
       32
     );
-    console.log(cookie);
+    // console.log(cookie);
     let sessionResponse = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/auth/session/${cookie}`
     );
-    console.log("edit session res: ", sessionResponse.data);
+    // console.log("edit session res: ", sessionResponse.data);
     if (ctx.query.pid === sessionResponse.data.userId) {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/user/${cookie}`
       );
-      console.log("edit user res: ", response);
+      // console.log("edit user res: ", response);
       return { user: response.data.user };
     } else {
       if (ctx.res) {
         ctx.res.writeHead(302, {
-          Location: `/profile/${ctx.query.user}`,
+          Location: `/profile/info/${ctx.query.user}`,
         });
         ctx.res.end();
       }

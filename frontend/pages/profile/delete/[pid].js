@@ -30,7 +30,7 @@ ProfileDelete.getInitialProps = async (ctx) => {
     } else {
       if (ctx.res) {
         ctx.res.writeHead(302, {
-          Location: `/profile/${ctx.query.user}`,
+          Location: `/profile/info/${ctx.query.user}`,
         });
         ctx.res.end();
       }

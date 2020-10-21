@@ -8,7 +8,7 @@ class Profile extends Component {
     this.handleProfileSelectionType = this.handleProfileSelectionType.bind(
       this
     );
-
+    console.log(props);
     this.state = {
       // profileOption: props.profileOption,
       profileType: "",

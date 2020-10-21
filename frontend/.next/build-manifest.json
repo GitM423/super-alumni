@@ -29,24 +29,25 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-<<<<<<< HEAD
-    "/contact": [
+    "/login": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/contact.js"
-=======
-<<<<<<< HEAD
-    "/contact": [
+      "static/chunks/pages/login.js"
+    ],
+    "/pool": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/contact.js"
-=======
-    "/profile": [
+      "static/chunks/pages/pool.js"
+    ],
+    "/profile/edit/[pid]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/profile.js"
->>>>>>> e7f92d3c3310778a1f358c4e6f79ab458bfbde02
->>>>>>> 442fadec24f2982c5bbe25ba51b2e97148538cef
+      "static/chunks/pages/profile/edit/[pid].js"
+    ],
+    "/profile/info/[pid]": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/profile/info/[pid].js"
     ]
   },
   "ampFirstPages": []

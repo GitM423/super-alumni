@@ -8,6 +8,7 @@ import LoginComp from "../components/Home/Login.component";
 import Header from "../components/essentials/Header.component";
 
 const Login = () => {
+  console.log("test");
   return (
     <Layout>
       <Header />

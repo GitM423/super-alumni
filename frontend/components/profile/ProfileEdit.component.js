@@ -46,7 +46,7 @@ class ProfileEdit extends Component {
       filtersLoaded: false,
     };
 
-    console.log(props.profile);
+    // console.log(props.profile);
   }
 
   loadFilters() {

@@ -4,11 +4,11 @@ import React, { Component } from "react";
 import axios from "axios";
 
 class Header extends Component {
-  static async getInitialProps(ctx) {
-    let cookieName = "super-session=s%3A";
-    console.log(cookieName);
-    return { cookieName };
-  }
+  // static async getInitialProps(ctx) {
+  //   let cookieName = "super-session=s%3A";
+  //   console.log(cookieName);
+  //   return { cookieName };
+  // }
 
   constructor(props) {
     super(props);
@@ -17,7 +17,7 @@ class Header extends Component {
     this.state = {
       expanded: false,
     };
-    console.log(this.props);
+    // console.log(this.props);
   }
   // static async getInitialProps(ctx) {
   //   let cookieName = "super-session=s%3A";

@@ -172,7 +172,7 @@ router.get(
     failureRedirect: "http://localhost:3000/login",
   }),
   (req, res) => {
-    console.log(req.session.passport.user);
+    // console.log(req.session.passport.user);
     // res.send({ status: "ok", msg: [{ msg: "test" }] });
     res.redirect("http://localhost:3000/profile");
   }
@@ -253,7 +253,7 @@ router.get("/type/:cookie", (req, res, next) => {
       // console.log(JSON.parse(session.session).passport.user);
       User.findById(JSON.parse(session.session).passport.user)
         .then((user) => {
-          console.log(user.profileType);
+          // console.log(user.profileType);
           res.json({
             status: "ProfileType checked",
             userId: JSON.parse(session.session).passport.user,
@@ -273,7 +273,7 @@ router.get("/user/:cookie", (req, res, next) => {
       // console.log(JSON.parse(session.session).passport.user);
       User.findById(JSON.parse(session.session).passport.user)
         .then((user) => {
-          console.log("user: ", user);
+          // console.log("user: ", user);
           res.json({
             status: "User authorized",
             user: user,
