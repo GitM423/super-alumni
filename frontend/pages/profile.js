@@ -8,8 +8,6 @@ import ProfileTypeComponent from "../components/ProfileType.component";
 import { withRouter } from "next/router";
 
 const Profile = (props) => {
-  console.log(props);
-
   return (
     <Layout>
       <HeaderComponent />

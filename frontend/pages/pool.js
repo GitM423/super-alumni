@@ -28,7 +28,7 @@ Pool.getInitialProps = async (ctx) => {
       `${process.env.NEXT_PUBLIC_API_URL}/auth/session/${cookie}`
     );
     // console.log("response: ", response);
-    return {};
+    return { msg: "Authorized" };
   } catch (error) {
     console.log(error);
     if (ctx.res) {
