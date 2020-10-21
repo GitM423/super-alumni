@@ -5,7 +5,7 @@ import Footer from "../components/essentials/Footer.component";
 import Link from "next/link";
 const Home = () => {
   return (
-    <div className="Homee">
+    <div>
       {/* Home Seite / Landing Page 1 */}
       <Header />
       <section id="Home">
@@ -139,7 +139,7 @@ const Home = () => {
             color: #fff;
             font-weight: 500;
             line-height: 38px;
-            font-size: 24px;
+            font-size: 17px;
             letter-spacing: 2.5px;
             text-align: center;
             padding-top: 1em;
@@ -161,10 +161,15 @@ const Home = () => {
           }
 
           #Hero {
+<<<<<<< HEAD
             min-height: 130vh;
+=======
+            // height: 130vh;
+>>>>>>> 442fadec24f2982c5bbe25ba51b2e97148538cef
             background-color: #fff;
             font-family: "neue-machina-light", sans-serif;
             margin-left: 200px;
+            margin-bottom: 50px;
           }
           .HeroArticle {
             padding: 100px 0 0 25px;
@@ -273,7 +278,7 @@ const Home = () => {
             .SuperAlumniText > h3 {
               font-weight: 500;
               line-height: 38px;
-              font-size: 20px;
+              font-size: 13px;
               letter-spacing: 2.5px;
               text-align: center;
             }
@@ -310,8 +315,7 @@ const Home = () => {
               font-size: 30px;
             }
             .SuperAlumniText > h3 {
-              font-weight: 500;
-              font-size: 10px;
+              font-size: 0.6em;
               max-width: 240px;
               text-align: center;
             }
@@ -319,6 +323,10 @@ const Home = () => {
               font-size: 11px;
             }
             #Hero {
+<<<<<<< HEAD
+=======
+              // height: 90vh;
+>>>>>>> 442fadec24f2982c5bbe25ba51b2e97148538cef
               margin-left: 20px;
               // display: none;
             }
