@@ -9,12 +9,17 @@ import HeaderComponent from "../../../components/essentials/Header.component";
 import ProfileEditComponent from "../../../components/profile/ProfileEdit.component";
 
 const ProfileEdit = (props) => {
-  return (
-    <Layout>
-      <HeaderComponent />
-      <ProfileEditComponent profile={props.user} />
-    </Layout>
-  );
+  if (props.user === "Unauthorized") {
+    let reload = window.location.reload(false);
+    return reload;
+  } else {
+    return (
+      <Layout>
+        <HeaderComponent />
+        <ProfileEditComponent profile={props.user} />
+      </Layout>
+    );
+  }
 };
 
 ProfileEdit.getInitialProps = async (ctx) => {
@@ -44,6 +49,7 @@ ProfileEdit.getInitialProps = async (ctx) => {
         });
         ctx.res.end();
       }
+      return { user: "Unauthorized" };
     }
   } catch (error) {
     console.log(error);
@@ -53,6 +59,7 @@ ProfileEdit.getInitialProps = async (ctx) => {
       });
       ctx.res.end();
     }
+    return { user: "Unauthorized" };
   }
 };
 

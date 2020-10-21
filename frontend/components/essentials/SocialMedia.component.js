@@ -26,7 +26,8 @@ const SocialMedia = () => (
       .SocialMediaIcon {
         display: flex;
         align-items: center;
-        padding: 40px 0;
+        // padding: 40px 0;
+        margin-top: 6em;
         list-style: none;
       }
 

@@ -101,6 +101,7 @@ const Home = () => {
 
             background-size: 69.3333px 69.3333px;
             padding-top: 10vh;
+            
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -114,7 +115,7 @@ const Home = () => {
             // padding-right: 20em;
             // margin-bottom: -4rem;
             position: absolute;
-            top: -50%;
+            top: -10em;
             left: -5.5%;
           }
           .HomeSuperAlumni img:nth-child(2) {
@@ -125,6 +126,7 @@ const Home = () => {
           }
           .SuperAlumniText {
             position: relative;
+            margin-top: 25vh;
             // position: absolute;
             // top: 40%;
             // left: 25%;
@@ -139,7 +141,7 @@ const Home = () => {
             color: #fff;
             font-weight: 500;
             line-height: 38px;
-            font-size: 17px;
+            font-size: 18px;
             letter-spacing: 2.5px;
             text-align: center;
             padding-top: 1em;
@@ -157,11 +159,12 @@ const Home = () => {
           }
           .MadeBySuperAlumni {
             margin-left: -80px;
+            margin-top: -2em;
             transform: rotate(-90deg);
           }
 
           #Hero {
-            min-height: 130vh;
+            height: auto;
             background-color: #fff;
             font-family: "neue-machina-light", sans-serif;
             margin-left: 200px;
@@ -286,13 +289,31 @@ const Home = () => {
             .HeroArticle a {
               font-size: 60px;
             }
+            #Home {
+              padding-bottom: 3vh;
+            }
           }
-
           /* mobile */
           @media (min-width: 320px) and (max-width: 767px) {
+            #Home {
+              padding-bottom: 3vh;
+            }
             .HomeSuperAlumni {
               // top: 28%;
               // left: 17%;
+            }
+            .HomeSuperAlumni {
+              display: flex;
+              flex-direction: column;
+              align-items: baseline;
+              // padding-right: 20em;
+              // margin-bottom: -4rem;
+              position: absolute;
+              top: -8em;
+              left: 7%;
+            }
+            .MadeBySuperAlumni {
+              margin-left: -55px;
             }
             .HomeSuperAlumni img:nth-child(1) {
               width: 75%;
@@ -306,6 +327,7 @@ const Home = () => {
             .SuperAlumniText {
               // left: 19%;
               // top: 34%;
+              top: -2em;
             }
             .SuperAlumniText > h1 {
               font-size: 30px;
