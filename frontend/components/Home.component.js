@@ -5,7 +5,7 @@ import Footer from "../components/essentials/Footer.component";
 import Link from "next/link";
 const Home = () => {
   return (
-    <div className="Homee">
+    <div>
       {/* Home Seite / Landing Page 1 */}
       <Header />
       <section id="Home">
@@ -151,10 +151,11 @@ const Home = () => {
           }
 
           #Hero {
-            height: 130vh;
+            // height: 130vh;
             background-color: #fff;
             font-family: "neue-machina-light", sans-serif;
             margin-left: 200px;
+            padding-bottom: 5vh;
           }
           .HeroArticle {
             padding: 100px 0 0 25px;
