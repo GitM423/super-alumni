@@ -1,6 +1,9 @@
-import axios from "axios";
 import React, { Component } from "react";
 import Link from "next/link";
+
+import FiltersProfile from "./partials/FiltersProfile.component";
+
+import { withRouter } from "next/router";
 
 class ProfileInfo extends Component {
   constructor(props) {
@@ -9,33 +12,17 @@ class ProfileInfo extends Component {
     // console.log(props.profile);
 
     this.state = {
-      profileOption: props.profileOption,
       profile: props.profile,
     };
   }
 
-  deleteProfile = (e) => {
-    axios.delete(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/profiles/${this.state.profile.email}`
-    );
-
-    window.location.href = "/profile";
-  };
-
-  editProfile = (e) => {
-    window.location.href = "/profile?profileOption=edit";
-  };
-
   render() {
     return (
       <main id="profile-info">
-         
-
         <section>
           {/* <div className="wrapDiv">
             <h1>{this.props.profile.displayName}</h1>
           </div> */}
-
 
           {/* <div className="animation-wrap">
             <div className="vertical-text-name">
@@ -51,13 +38,25 @@ class ProfileInfo extends Component {
               alt=""
             ></img>
             <div className="social-wrap">
-              <a href={"mailto:" + this.props.profile.email} get="_blank">
+              <a
+                href={"mailto:" + this.props.profile.email}
+                get="_blank"
+                className="pointer"
+              >
                 <img src="/Mail.png" alt=""></img>
               </a>
-              <a href={this.props.profile.githubUrl} target="_blank">
+              <a
+                href={this.props.profile.githubUrl}
+                target="_blank"
+                className="pointer"
+              >
                 <img src="/github.png" alt=""></img>
               </a>
-              <a href={this.props.profile.linkedinUrl} target="_blank">
+              <a
+                href={this.props.profile.linkedinUrl}
+                target="_blank"
+                className="pointer"
+              >
                 <img src="/Linkedin.png" alt=""></img>
               </a>
             </div>
@@ -66,38 +65,38 @@ class ProfileInfo extends Component {
         </section>
 
         <section>
-          <div>
-            <div className="filter-tag">tag1</div>
-            <div className="filter-tag">tag2</div>
-            <div className="filter-tag">tag3</div>
-          </div>
+          <h6>Arbeitsfeld:</h6>
+          <FiltersProfile data={this.props.profile.field} />
           {/* <h2>{this.props.profile.displayName}</h2> */}
+          <h6>Über mich:</h6>
+
           <p>{this.props.profile.description}</p>
-          <h6>Berufserfahrung: {this.props.profile.experience} </h6>
-          <div className="wrap">
-            <div className="wrap-tags">
-              <div className="filter-tag">tag1 +</div>
-              <div className="filter-tag">tag2 +</div>
-              <div className="filter-tag">tag3 +</div>
-              <div className="filter-tag">tag4 +</div>
-              <div className="filter-tag">tag5 +</div>
-              <div className="filter-tag">tag6 +</div>
+          <h6>Berufserfahrung: {this.props.profile.experience}</h6>
+          <h6>Skills:</h6>
+          <FiltersProfile data={this.props.profile.skills} />
+          {this.props.activeUser ? (
+            <div className="change-wrap">
+              <Link href={`/profile/edit/${this.props.profile._id}`}>
+                <button className="edit-btn">
+                  <img src="/edit.png" alt=""></img>
+                </button>
+              </Link>
+              <Link href={`/profile/delete/${this.props.profile._id}`}>
+                <button className="delete-btn">
+                  <img src="/minus.png" alt=""></img>
+                </button>
+              </Link>
             </div>
-          </div>
-          <div className="change-wrap">
-            <button className="edit-btn" onClick={this.editProfile}>
-              <img src="/edit.png" alt=""></img>
-            </button>
-            <button className="delete-btn" onClick={this.deleteProfile}>
-              <img src="/minus.png" alt=""></img>
-            </button>
-          </div>
+          ) : (
+            <div></div>
+          )}
         </section>
 
         <style jsx>
           {`
             main {
-              height: 90vh;
+              min-height: 100vh;
+              padding-top: 10vh;
               display: grid;
               grid-template-columns: 1fr 1fr;
               font-family: "neue-machina-light", sans-serif;
@@ -131,7 +130,6 @@ class ProfileInfo extends Component {
               width: 80%;
               text-align: center;
             }
-            
 
             main figcaption {
               font-size: 0.8em;
@@ -167,7 +165,7 @@ class ProfileInfo extends Component {
             }
             main section:nth-of-type(2) h6 {
               font-size: 1em;
-              padding-bottom: 2em;
+              padding: 1rem 0;
               font-family: "neue-machina-regular", sans-serif;
             }
             main section:nth-of-type(2) h2 {
@@ -203,24 +201,6 @@ class ProfileInfo extends Component {
             //   }
             // }
 
-            .filter-tag {
-              display: inline-block;
-              padding: 0.3rem 0.6rem;
-              border-radius: 0.5rem;
-              border: 1px solid #99879d;
-              color: #99879d;
-              margin: 0.1em;
-              transition: 0.5s all;
-            }
-            .filter-tag:hover {
-              background: #99879d80;
-              color: #ffffff;
-              cursor: pointer;
-            }
-            .filter-tag-active {
-              background: #99879d;
-              color: #ffffff;
-            }
             .wrap {
               display: flex;
               align-items: center;
@@ -331,4 +311,4 @@ class ProfileInfo extends Component {
   }
 }
 
-export default ProfileInfo;
+export default withRouter(ProfileInfo);

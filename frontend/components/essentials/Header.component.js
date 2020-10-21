@@ -1,7 +1,15 @@
 import Link from "next/link";
 import React, { Component } from "react";
 
+import axios from "axios";
+
 class Header extends Component {
+  // static async getInitialProps(ctx) {
+  //   let cookieName = "super-session=s%3A";
+  //   console.log(cookieName);
+  //   return { cookieName };
+  // }
+
   constructor(props) {
     super(props);
     this.toggleNavigation = this.toggleNavigation.bind(this);
@@ -9,7 +17,30 @@ class Header extends Component {
     this.state = {
       expanded: false,
     };
+    // console.log(this.props);
   }
+  // static async getInitialProps(ctx) {
+  //   let cookieName = "super-session=s%3A";
+  //   let cookie = ctx.req.headers.cookie.substr(
+  //     ctx.req.headers.cookie.indexOf(cookieName) + cookieName.length,
+  //     32
+  //   );
+  //   console.log(cookie);
+
+  //   const response = await axios.get(
+  //     `${process.env.NEXT_PUBLIC_API_URL}/auth/session/${cookie}`
+  //   );
+  //   if (response.data.status === "Session active") {
+  //     return {
+  //       loggedIn: true,
+  //       userId: response.data.userId,
+  //     };
+  //   } else {
+  //     return {
+  //       loggedIn: false,
+  //     };
+  //   }
+  // }
 
   toggleNavigation() {
     this.setState({ expanded: !this.state.expanded });
@@ -18,12 +49,14 @@ class Header extends Component {
   render() {
     return (
       <header id="Header">
-        <Link href="/">
-          <a>super(code)</a>
-        </Link>
-        <div className="menuToggle" onClick={this.toggleNavigation}>
-          <img className="MenuButtonImg" src="/MenuButton.svg" alt="" />
-        </div>
+        <nav>
+          <Link href="/">
+            <a>super(code)</a>
+          </Link>
+          <div className="menuToggle" onClick={this.toggleNavigation}>
+            <img className="MenuButtonImg" src="/MenuButton.svg" alt="" />
+          </div>
+        </nav>
 
         <div
           className={this.state.expanded ? "expanded-navigation" : " hidden"}
@@ -39,6 +72,19 @@ class Header extends Component {
                 <a>Contact</a>
               </Link>
             </li>
+            <li>
+              <Link href="/pool">
+                <a>Pool</a>
+              </Link>
+            </li>
+
+            {this.state.loggedIn && (
+              <li>
+                <Link href="/profile/info/">
+                  <a>Profil</a>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
 
@@ -47,33 +93,37 @@ class Header extends Component {
             padding: 0;
             margin: 0;
           }
-          #Header {
+          #Header,
+          nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 5px;
+            padding: 0 5%;
             background-color: rgb(3, 0, 15);
             height: 10vh;
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 5;
           }
 
-          #Header > a {
+          #Header nav > a {
             color: white;
             font-family: "neue-machina-light", sans-serif;
             text-decoration: none;
-            padding-left: 50px;
             font-size: 25px;
           }
           .expanded-navigation {
-            position: absolute;
+            position: fixed;
             width: 100%;
             height: 100vh;
             // margin: -80px 0px 0 0;
             // padding-top: 300px;
-            top: 10vh;
-            right: 0;
+            top: 0;
+            left: 0;
             display: flex;
-            z-index: 10;
+            z-index: 4;
             justify-content: center;
             align-items: center;
             background: rgb(3, 0, 15);

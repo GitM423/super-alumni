@@ -3,14 +3,17 @@ import Layout from "../components/Layout.component";
 
 import { withRouter } from "next/router";
 
+import Header from "../components/essentials/Header.component";
+
 import RegisterComp from "../components/Home/Register.component";
 
-const Pool = () => {
+const Register = () => {
   return (
     <Layout>
+      <Header />
       <RegisterComp />
     </Layout>
   );
 };
 
-export default withRouter(Pool);
+export default withRouter(Register);

@@ -27,8 +27,8 @@ Pool.getInitialProps = async (ctx) => {
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/auth/session/${cookie}`
     );
-    // console.log("response: ", response);
-    return {};
+    console.log("response: ", response);
+    return { hallo: "test" };
   } catch (error) {
     console.log(error);
     if (ctx.res) {

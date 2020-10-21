@@ -96,6 +96,7 @@ passport.use(
         if (user) {
           // User exists
           console.log("User already exists");
+          console.log(user);
           return done(null, user);
         } else {
           // User doesn't exist

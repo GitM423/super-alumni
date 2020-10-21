@@ -11,14 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@xstate/react": "^1.0.1",
     "axios": "^0.20.0",
-    "cookie": "^0.4.1",
-    "js-cookie": "^2.2.1",
     "next": "^9.5.5",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "universal-cookie": "^4.0.4",
-    "xstate": "^4.13.0"
+    "react-cookie": "^4.0.3",
+    "react-dom": "^16.13.1"
   }
 }

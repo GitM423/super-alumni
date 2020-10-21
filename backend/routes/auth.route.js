@@ -172,9 +172,9 @@ router.get(
     failureRedirect: "http://localhost:3000/login",
   }),
   (req, res) => {
-    console.log(req.session.passport.user);
+    // console.log(req.session.passport.user);
     // res.send({ status: "ok", msg: [{ msg: "test" }] });
-    res.redirect("http://localhost:3000/dashboard");
+    res.redirect("http://localhost:3000/profile");
   }
 );
 
@@ -222,8 +222,8 @@ router.get(
 const checkAuth = (req, res, next) => {
   console.log(req.params);
   if (req.user) {
-    console.log(req.user.id);
-    console.log(req.session.passport.user);
+    // console.log(req.user.id);
+    // console.log(req.session.passport.user);
 
     next();
   } else {
@@ -232,27 +232,31 @@ const checkAuth = (req, res, next) => {
 };
 
 router.get("/session/:cookie", (req, res, next) => {
-  console.log(req.params.cookie);
+  // console.log(req.params.cookie);
 
   Session.findById(req.params.cookie)
     .then((sess) => {
-      console.log(JSON.parse(sess.session).passport.user);
-      res.json({ status: "Session active" });
+      // console.log(JSON.parse(sess.session).passport.user);
+      res.json({
+        status: "Session active",
+        userId: JSON.parse(sess.session).passport.user,
+      });
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.get("/type/:cookie", (req, res, next) => {
-  console.log(req.params.cookie);
+  // console.log(req.params.cookie);
 
   Session.findById(req.params.cookie)
     .then((session) => {
-      console.log(JSON.parse(session.session).passport.user);
+      // console.log(JSON.parse(session.session).passport.user);
       User.findById(JSON.parse(session.session).passport.user)
         .then((user) => {
-          console.log(user.profileType);
+          // console.log(user.profileType);
           res.json({
             status: "ProfileType checked",
+            userId: JSON.parse(session.session).passport.user,
             profileType: user.profileType,
           });
         })
@@ -262,15 +266,20 @@ router.get("/type/:cookie", (req, res, next) => {
 });
 
 router.get("/user/:cookie", (req, res, next) => {
-  console.log(req.params.cookie);
+  // console.log(req.params.cookie);
 
   Session.findById(req.params.cookie)
     .then((session) => {
-      console.log(JSON.parse(session.session).passport.user);
-      res.json({
-        status: "User varified",
-        user: JSON.parse(session.session).passport.user,
-      });
+      // console.log(JSON.parse(session.session).passport.user);
+      User.findById(JSON.parse(session.session).passport.user)
+        .then((user) => {
+          // console.log("user: ", user);
+          res.json({
+            status: "User authorized",
+            user: user,
+          });
+        })
+        .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });

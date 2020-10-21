@@ -12,7 +12,10 @@ class AlumniCard extends Component {
     return (
       <figure>
         <figcaption>{this.props.alumni.title}</figcaption>
-        <Link href={`/profile/${this.props.alumni._id}`}>
+        <Link
+          href={`/profile/info/${this.props.alumni._id}`}
+          className="pointer"
+        >
           <img
             className="profile-photo"
             src={this.props.alumni.imageUrl}
@@ -22,13 +25,13 @@ class AlumniCard extends Component {
 
         {/* ******** placeholder links */}
         <div className="social-wrap">
-          <a href="mailto: + email@example.com" get="_blank">
+          <a href={"mailto:" + this.props.alumni.email} get="_blank">
             <img src="email-icon-black.png" alt=""></img>
           </a>
-          <a href="www.change.this" target="_blank">
+          <a href={this.props.alumni.githubUrl} target="_blank">
             <img src="github-black.png" alt=""></img>
           </a>
-          <a href="www.change.this" target="_blank">
+          <a href={this.props.alumni.linkedinUrl} target="_blank">
             <img src="Linkedin-black.png" alt=""></img>
           </a>
         </div>
@@ -195,23 +198,23 @@ class AlumniCard extends Component {
               font-size: 0.9em;
             }
           }
-            @media (min-width: 320px) and (max-width: 767px) {
-              figure {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-              }
-              figcaption {
-                align-self: flex-start;
-              }
-              figure img {
-                height: 40vh;
-              }
-              .alumni-card-description p {
-                font-size: 0.9em;
-              }
+          @media (min-width: 320px) and (max-width: 767px) {
+            figure {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
             }
+            figcaption {
+              align-self: flex-start;
+            }
+            figure img {
+              height: 40vh;
+            }
+            .alumni-card-description p {
+              font-size: 0.9em;
+            }
+          }
         `}</style>
         {/* </article> */}
       </figure>

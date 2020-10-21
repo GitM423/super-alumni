@@ -9,17 +9,18 @@ const Home = () => {
       {/* Home Seite / Landing Page 1 */}
       <Header />
       <section id="Home">
-        <article className="HomeSuperAlumni">
-          <img src="/superAlumni1.svg" alt="" />
-          <img src="/superAlumni2.svg" alt="" />
-          <img src="/superAlumni3.svg" alt="" />
-        </article>
+        <article></article>
 
         <article className="SuperAlumniText">
+          <div className="HomeSuperAlumni">
+            <img src="/superAlumni1.svg" alt="" />
+            <img src="/superAlumni2.svg" alt="" />
+            <img src="/superAlumni3.svg" alt="" />
+          </div>
           <h1>super alumni</h1>
           <h3>
-            Join alumni, members and friends of the SuperCode community. 
-             <br/>
+            Join alumni, members and friends of the SuperCode community.
+            <br />
             Sign up today, make a profile and stay in touch!
           </h3>
         </article>
@@ -99,15 +100,22 @@ const Home = () => {
               rgb(255, 255, 255);
 
             background-size: 69.3333px 69.3333px;
-            height: 90vh;
+            padding-top: 10vh;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
           }
           .HomeSuperAlumni {
             display: flex;
             flex-direction: column;
             align-items: baseline;
+            // padding-right: 20em;
+            // margin-bottom: -4rem;
             position: absolute;
-            top: 20%;
-            left: 22%;
+            top: -50%;
+            left: -5.5%;
           }
           .HomeSuperAlumni img:nth-child(2) {
             margin-top: -3%;
@@ -116,9 +124,10 @@ const Home = () => {
             margin-top: -3%;
           }
           .SuperAlumniText {
-            position: absolute;
-            top: 40%;
-            left: 25%;
+            position: relative;
+            // position: absolute;
+            // top: 40%;
+            // left: 25%;
           }
           .SuperAlumniText > h1 {
             color: rgba(61, 215, 172, 1);
@@ -130,17 +139,18 @@ const Home = () => {
             color: #fff;
             font-weight: 500;
             line-height: 38px;
-            font-size: 24px;
+            font-size: 17px;
             letter-spacing: 2.5px;
             text-align: center;
             padding-top: 1em;
           }
           .ScrollForMore {
+            width: 90%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: #fff;
-            padding: 500px 50px 0 50px;
+            margin-bottom: 3%;
           }
           .MadeBySuperAlumni > p {
             font-size: 13px;
@@ -151,11 +161,19 @@ const Home = () => {
           }
 
           #Hero {
+<<<<<<< HEAD
             // height: 130vh;
             background-color: #fff;
             font-family: "neue-machina-light", sans-serif;
             margin-left: 200px;
             padding-bottom: 5vh;
+=======
+            min-height: 130vh;
+            background-color: #fff;
+            font-family: "neue-machina-light", sans-serif;
+            margin-left: 200px;
+            margin-bottom: 50px;
+>>>>>>> b0c955510275002997f26e46ba78eacb222aa67a
           }
           .HeroArticle {
             padding: 100px 0 0 25px;
@@ -242,8 +260,8 @@ const Home = () => {
           /* tablet */
           @media (min-width: 768px) and (max-width: 1024px) {
             .HomeSuperAlumni {
-              top: 23.5%;
-              left: 17%;
+              // top: 23.5%;
+              // left: 17%;
             }
             .HomeSuperAlumni img:nth-child(1) {
               width: 75%;
@@ -255,8 +273,8 @@ const Home = () => {
               width: 82%;
             }
             .SuperAlumniText {
-              left: 21%;
-              top: 39%;
+              // left: 21%;
+              // top: 39%;
             }
             .SuperAlumniText > h1 {
               font-size: 80px;
@@ -264,14 +282,13 @@ const Home = () => {
             .SuperAlumniText > h3 {
               font-weight: 500;
               line-height: 38px;
-              font-size: 20px;
+              font-size: 13px;
               letter-spacing: 2.5px;
               text-align: center;
             }
 
             #Hero {
               margin-left: 100px;
-              height: 110vh;
             }
 
             .HeroArticle a {
@@ -282,8 +299,8 @@ const Home = () => {
           /* mobile */
           @media (min-width: 320px) and (max-width: 767px) {
             .HomeSuperAlumni {
-              top: 28%;
-              left: 17%;
+              // top: 28%;
+              // left: 17%;
             }
             .HomeSuperAlumni img:nth-child(1) {
               width: 75%;
@@ -295,15 +312,14 @@ const Home = () => {
               width: 82%;
             }
             .SuperAlumniText {
-              left: 19%;
-              top: 34%;
+              // left: 19%;
+              // top: 34%;
             }
             .SuperAlumniText > h1 {
               font-size: 30px;
             }
             .SuperAlumniText > h3 {
-              font-weight: 500;
-              font-size: 10px;
+              font-size: 0.6em;
               max-width: 240px;
               text-align: center;
             }
@@ -311,7 +327,6 @@ const Home = () => {
               font-size: 11px;
             }
             #Hero {
-              height: 90vh;
               margin-left: 20px;
               // display: none;
             }

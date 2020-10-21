@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import { useRouter, withRouter, location } from "next/router";
+import { withRouter } from "next/router";
 
-import FiltersSearch from "./essentials/FiltersSearch.component";
-import FilterTag from "./essentials/FilterTag.component";
-import PoolFilters from "./pool/partials/PoolFilters.component";
+import FiltersPool from "./pool/partials/FiltersPool.component";
 
 import AlumniList from "./pool/partials/AlumniList.component";
 import OrderList from "./pool/partials/OrdersList.component";
@@ -119,7 +117,7 @@ class Pool extends Component {
                 Go To Orders Pool
               </button>
 
-              <PoolFilters
+              <FiltersPool
                 filtersData={this.state.filtersData}
                 activeFilterTags={this.state.activeFilterTags}
                 toggleFilters={this.toggleFilters}
@@ -154,7 +152,7 @@ class Pool extends Component {
                 Go To Super Alumni Pool
               </button>
 
-              <PoolFilters
+              <FiltersPool
                 filtersData={this.state.filtersData}
                 activeFilterTags={this.state.activeFilterTags}
                 toggleFilters={this.toggleFilters}
@@ -180,6 +178,7 @@ class Pool extends Component {
           #pool {
             padding: 5rem 10rem;
             color: #1e252c;
+            padding-top: calc(10vh + 5rem);
           }
           #pool p {
             color: #4a4a4a;

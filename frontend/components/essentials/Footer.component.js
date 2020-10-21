@@ -11,7 +11,7 @@ const Footer = () => {
           justify-content: space-between;
           align-items: center;
           background: #000;
-          padding: 10px 20px;
+          padding: 0 5%;
           height: 10vh;
           list-style: none;
           font-family: "neue-machina-light", sans-serif;

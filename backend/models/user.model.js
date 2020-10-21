@@ -15,12 +15,12 @@ const userSchema = new Schema({
   description: { type: String },
   githubUrl: { type: String },
   linkedinUrl: { type: String },
-  experience: { type: Number },
 
   // Filters
   workingHours: { type: Array },
   field: { type: Array },
   skills: { type: Array },
+  experience: { type: Array },
 });
 
 const User = mongoose.model("user", userSchema);

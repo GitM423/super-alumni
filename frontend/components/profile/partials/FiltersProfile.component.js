@@ -5,15 +5,10 @@ import FilterTag from "../../essentials/FilterTag.component";
 class PoolFilters extends Component {
   constructor(props) {
     super(props);
-    this.toggleExpanded = this.toggleExpanded.bind(this);
 
     this.state = {
       expanded: false,
     };
-  }
-
-  toggleExpanded() {
-    this.setState({ expanded: !this.state.expanded });
   }
 
   render() {
@@ -21,57 +16,10 @@ class PoolFilters extends Component {
       <div>
         <div className="filters-list">
           <div className="active-filter-tags">
-            {this.props.activeFilterTags.map((tag) => {
-              return (
-                <FilterTag
-                  tag={tag}
-                  toggleFilters={this.props.toggleFilters}
-                  active={true}
-                />
-              );
+            {this.props.data.map((tag) => {
+              return <FilterTag tag={tag} status="profile" />;
             })}
           </div>
-          <div className="filters-btns">
-            <div className="show-filters pointer" onClick={this.toggleExpanded}>
-              <h2>Alle&nbsp;Filter</h2>
-            </div>
-            <div
-              className="reset-filters pointer"
-              onClick={this.props.resetFilters}
-            >
-              <h2>Reset&nbsp;Filters</h2>
-            </div>
-          </div>
-        </div>
-
-        <div
-          className={this.state.expanded ? "expanded-filters-list" : " hidden"}
-        >
-          {this.props.filtersData.map((filter) => {
-            return (
-              <div className="filter-category">
-                <h2>{filter.category}:</h2>
-                {filter.options.map((filterOption) => {
-                  if (this.props.activeFilterTags.includes(filterOption)) {
-                    return (
-                      <FilterTag
-                        tag={filterOption}
-                        toggleFilters={this.props.toggleFilters}
-                        active={true}
-                      />
-                    );
-                  } else {
-                    return (
-                      <FilterTag
-                        tag={filterOption}
-                        toggleFilters={this.props.toggleFilters}
-                      />
-                    );
-                  }
-                })}
-              </div>
-            );
-          })}
         </div>
 
         <style jsx>{`
@@ -80,7 +28,7 @@ class PoolFilters extends Component {
             padding-bottom: 0.2em;
           }
           .filters-list {
-            padding: 2rem 0;
+            padding: 1rem 0;
           }
           .active-filter-tags {
           }

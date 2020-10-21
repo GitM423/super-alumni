@@ -5,7 +5,7 @@ class FilterTag extends React.Component {
   render() {
     return (
       <div className="filter-tag-container">
-        {this.props.active ? (
+        {this.props.status === "active" ? (
           <div
             className="filter-tag filter-tag-active"
             onClick={() => {
@@ -14,7 +14,7 @@ class FilterTag extends React.Component {
           >
             {this.props.tag} <span>-</span>
           </div>
-        ) : (
+        ) : this.props.status === "inactive" ? (
           <div
             className="filter-tag"
             onClick={() => {
@@ -23,7 +23,12 @@ class FilterTag extends React.Component {
           >
             {this.props.tag} <span>+</span>
           </div>
+        ) : this.props.status === "profile" ? (
+          <div className="filter-tag">{this.props.tag}</div>
+        ) : (
+          {}
         )}
+
         <style jsx>{`
           .filter-tag-container {
             display: inline-block;

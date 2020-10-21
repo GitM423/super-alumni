@@ -45,6 +45,7 @@ class AlumniList extends Component {
           !alumni.workingHours.includes(activeTag) &&
           !alumni.field.includes(activeTag) &&
           !alumni.skills.includes(activeTag) &&
+          !alumni.experience.includes(activeTag) &&
           this.props.activeFilterTags != []
         ) {
           check = false;

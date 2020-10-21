@@ -1,69 +1,68 @@
 import React, { Component } from "react";
-
-import axios from "axios";
+import ProfileInfo from "./profile/ProfileInfo.component";
+import ProfileEdit from "./profile/ProfileEdit.component";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
-    this.handleProfileSelectionType = this.handleProfileSelectionType.bind(
-      this
-    );
-    console.log(props);
+    this.handleEdit = this.handleEdit.bind(this);
+
     this.state = {
-      // profileOption: props.profileOption,
+      profileOption: props.profileOption,
       profileType: "",
-      userId: props.userId,
+      profile: props.profile,
     };
   }
 
   handleProfileSelectionType(profileType) {
-    const data = {
-      userId: this.props.userId,
-      profileType: profileType,
-    };
-    axios
-      .post("http://localhost:5000/api/profile/updateType", data)
-      .then((response) => {
-        console.log(response.msg);
-        this.props.router.push(`/profile/${this.props.userId}`);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.setState({ profileOption: "edit", profileType: profileType });
   }
 
-  // handleEdit() {
-  //   this.setState({ profileOption: "edit" });
-  // }
+  handleEdit() {
+    this.setState({ profileOption: "edit" });
+  }
 
   render() {
     return (
       <div id="profile">
-        <main>
-          <div className="vertical-text">Start</div>
-          <div className="left">
-            <button
-              onClick={this.handleProfileSelectionType("developer")}
-              className="btn btn-black"
-            >
-              Entwickler
-            </button>
-          </div>
-          <div className="right">
-            <button
-              onClick={this.handleProfileSelectionType("client")}
-              className="btn btn-green"
-            >
-              Kunde
-            </button>
-          </div>
-        </main>
+        {this.state.profileOption === "selection" ? (
+          <main>
+            <div className="vertical-text">Start</div>
+            <div className="left">
+              <button
+                onClick={() => this.handleProfileSelectionType("developer")}
+                className="btn btn-black"
+              >
+                Entwickler
+              </button>
+            </div>
+            <div className="right">
+              <button
+                onClick={() => this.handleProfileSelectionType("client")}
+                className="btn btn-green"
+              >
+                Kunde
+              </button>
+            </div>
+          </main>
+        ) : this.state.profileOption === "info" ? (
+          <ProfileInfo
+            profile={this.state.profile}
+            clickEdit={this.handleEdit}
+          />
+        ) : this.state.profileOption === "edit" ? (
+          <ProfileEdit
+            profile={this.state.profile}
+            profileType={this.state.profileType}
+          />
+        ) : (
+          <div>Error</div>
+        )}
 
         <style jsx>
           {`
             main {
-              min-height: 100vh;
-              padding-top: 10vh;
+              height: 90vh;
               display: grid;
               grid-template-columns: 1fr 1fr;
               font-family: "neue-machina-light";
