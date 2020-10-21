@@ -174,7 +174,7 @@ router.get(
   (req, res) => {
     // console.log(req.session.passport.user);
     // res.send({ status: "ok", msg: [{ msg: "test" }] });
-    res.redirect("http://localhost:3000/profile");
+    res.redirect("http://localhost:3000/profileT");
   }
 );
 
