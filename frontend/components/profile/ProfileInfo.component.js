@@ -71,7 +71,9 @@ class ProfileInfo extends Component {
           <h6>Über mich:</h6>
 
           <p>{this.props.profile.description}</p>
-          <h6>Berufserfahrung: {this.props.profile.experience}</h6>
+          <h6>
+            Programmiererfahrung: <span>{this.props.profile.experience}</span>
+          </h6>
           <h6>Skills:</h6>
           <FiltersProfile data={this.props.profile.skills} />
           {this.props.activeUser ? (
@@ -167,6 +169,9 @@ class ProfileInfo extends Component {
               font-size: 1em;
               padding: 1rem 0;
               font-family: "neue-machina-regular", sans-serif;
+            }
+            main section:nth-of-type(2) h6 span {
+              font-weight: 400;
             }
             main section:nth-of-type(2) h2 {
               padding: 1em 0;

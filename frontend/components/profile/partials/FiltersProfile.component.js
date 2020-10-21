@@ -28,7 +28,6 @@ class PoolFilters extends Component {
             padding-bottom: 0.2em;
           }
           .filters-list {
-            padding: 1rem 0;
           }
           .active-filter-tags {
           }

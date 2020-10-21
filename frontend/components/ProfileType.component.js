@@ -45,25 +45,23 @@ class ProfileType extends Component {
 
   render() {
     return (
-      <div id="profile">
-        <main>
-          <div className="vertical-text">Start</div>
-          <div className="left">
-            <button onClick={this.setTypeDeveloper} className="btn btn-black">
-              Entwickler
-            </button>
-          </div>
-          <div className="right">
-            <button onClick={this.setTypeClient} className="btn btn-green">
-              Kunde
-            </button>
-          </div>
-        </main>
+      <main id="profile">
+        <div className="vertical-text">Start</div>
+        <div className="left">
+          <button onClick={this.setTypeDeveloper} className="btn btn-black">
+            Entwickler
+          </button>
+        </div>
+        <div className="right">
+          <button onClick={this.setTypeClient} className="btn btn-green">
+            Kunde
+          </button>
+        </div>
 
         <style jsx>
           {`
             main {
-              min-height: 100vh;
+              height: 100vh;
 
               display: grid;
               grid-template-columns: 1fr 1fr;
@@ -103,7 +101,7 @@ class ProfileType extends Component {
             }
           `}
         </style>
-      </div>
+      </main>
     );
   }
 }

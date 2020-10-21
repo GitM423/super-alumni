@@ -1,0 +1,15 @@
+{
+  "workingHours": ["Vollzeit"],
+  "field": ["Frontend"],
+  "skills": ["Next.js", "React.js"],
+  "email": "karim@supercode.com",
+  "displayName": "Abdulkarim",
+  "imageUrl": "https://github.com/GitM423/super-alumni/blob/main/frontend/public/_DSC6645_LowRes.jpg?raw=true",
+  "profileType": "developer",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro aliquid placeat itaque repudiandae quasi omnis, recusandae unde laudantium aspernatur quod, veniam neque nemo accusamus modi illo debitis voluptatum suscipit hic.",
+  "githubUrl": "https://github.com/",
+  "linkedinUrl": "https://www.linkedin.com/",
+  "__v": 0,
+  "experience": [""],
+  "title": "React"
+}

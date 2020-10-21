@@ -17,7 +17,6 @@ const Profile = (props) => {
       <Layout>
         <HeaderComponent />
         <ProfileTypeComponent userId={props.userId} />
-        hi
       </Layout>
     );
   }

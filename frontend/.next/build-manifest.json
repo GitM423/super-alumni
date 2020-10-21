@@ -39,10 +39,25 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/pool.js"
     ],
+    "/profile/delete/[pid]": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/profile/delete/[pid].js"
+    ],
     "/profile/edit/[pid]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/profile/edit/[pid].js"
+    ],
+    "/profile/info/[pid]": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/profile/info/[pid].js"
+    ],
+    "/profileT": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/profileT.js"
     ]
   },
   "ampFirstPages": []

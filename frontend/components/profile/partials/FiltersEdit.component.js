@@ -45,10 +45,10 @@ class PoolFilters extends Component {
         <style jsx>{`
           h2 {
             font-size: 1.2em;
-            padding-bottom: 0.2em;
+            padding-bottom: 0.5rem;
           }
           .filters-list {
-            padding: 2rem 0;
+            padding: 1rem 0;
           }
           .active-filter-tags {
           }
