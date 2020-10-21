@@ -2,8 +2,13 @@ import axios from "axios";
 
 import { withRouter } from "next/router";
 
-const ProfileDelete = () => {
-  return <div>Delete</div>;
+const ProfileDelete = (props) => {
+  if (props.user === "Unauthorized") {
+    let reload = window.location.reload(false);
+    return reload;
+  } else {
+    return <div>Delete</div>;
+  }
 };
 
 ProfileDelete.getInitialProps = async (ctx) => {
@@ -26,6 +31,7 @@ ProfileDelete.getInitialProps = async (ctx) => {
           Location: `/login`,
         });
         ctx.res.end();
+        return { user: "Unauthorized" };
       }
     } else {
       if (ctx.res) {
@@ -34,6 +40,7 @@ ProfileDelete.getInitialProps = async (ctx) => {
         });
         ctx.res.end();
       }
+      return { user: "Unauthorized" };
     }
   } catch (error) {
     console.log(error);
@@ -43,6 +50,7 @@ ProfileDelete.getInitialProps = async (ctx) => {
       });
       ctx.res.end();
     }
+    return { user: "Unauthorized" };
   }
 };
 

@@ -8,7 +8,7 @@ import axios from "axios";
 import PoolComponent from "../components/Pool.component";
 import HeaderComponent from "../components/essentials/Header.component";
 
-const Pool = (props) => {
+const Pool = () => {
   return (
     <Layout>
       <HeaderComponent />
@@ -28,7 +28,7 @@ Pool.getInitialProps = async (ctx) => {
       `${process.env.NEXT_PUBLIC_API_URL}/auth/session/${cookie}`
     );
     // console.log("response: ", response);
-    return {};
+    return { msg: "Authorized" };
   } catch (error) {
     console.log(error);
     if (ctx.res) {
@@ -37,6 +37,7 @@ Pool.getInitialProps = async (ctx) => {
       });
       ctx.res.end();
     }
+    return { msg: "Unauthorized" };
   }
 };
 

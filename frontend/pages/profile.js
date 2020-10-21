@@ -8,14 +8,17 @@ import ProfileTypeComponent from "../components/ProfileType.component";
 import { withRouter } from "next/router";
 
 const Profile = (props) => {
-  console.log(props);
-
-  return (
-    <Layout>
-      <HeaderComponent />
-      <ProfileTypeComponent userId={props.userId} />
-    </Layout>
-  );
+  if (props.userId === "Unauthorized") {
+    let reload = window.location.reload(false);
+    return reload;
+  } else {
+    return (
+      <Layout>
+        <HeaderComponent />
+        <ProfileTypeComponent userId={props.userId} />
+      </Layout>
+    );
+  }
 };
 
 Profile.getInitialProps = async (ctx) => {
@@ -42,6 +45,7 @@ Profile.getInitialProps = async (ctx) => {
         });
         ctx.res.end();
       }
+      return { userId: "Unauthorized" };
     }
   } catch (error) {
     console.log(error);
@@ -51,6 +55,7 @@ Profile.getInitialProps = async (ctx) => {
       });
       ctx.res.end();
     }
+    return { userId: "Unauthorized" };
   }
 };
 

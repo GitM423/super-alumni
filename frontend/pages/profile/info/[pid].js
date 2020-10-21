@@ -8,15 +8,20 @@ import ProfileInfoComponent from "../../../components/profile/ProfileInfo.compon
 import { withRouter } from "next/router";
 
 const ProfileInfo = (props) => {
-  return (
-    <Layout>
-      <HeaderComponent />
-      <ProfileInfoComponent
-        profile={props.user}
-        activeUser={props.activeUser}
-      />
-    </Layout>
-  );
+  if (props.user === "Unauthorized") {
+    let reload = window.location.reload(false);
+    return reload;
+  } else {
+    return (
+      <Layout>
+        <HeaderComponent />
+        <ProfileInfoComponent
+          profile={props.user}
+          activeUser={props.activeUser}
+        />
+      </Layout>
+    );
+  }
 };
 
 ProfileInfo.getInitialProps = async (ctx) => {
@@ -34,6 +39,7 @@ ProfileInfo.getInitialProps = async (ctx) => {
       `${process.env.NEXT_PUBLIC_API_URL}/api/alumni/${ctx.query.pid}`
     );
     // console.log(response.data);
+
     if (ctx.query.pid === sessionResponse.data.userId) {
       return { user: response.data, activeUser: true };
     } else {
@@ -47,6 +53,7 @@ ProfileInfo.getInitialProps = async (ctx) => {
       });
       ctx.res.end();
     }
+    return { user: "Unauthorized", activeUser: false };
   }
 };
 
