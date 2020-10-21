@@ -127,4 +127,9 @@ html {
 .google-btn img {
   padding-right: 0.5em;
 }
+
+.pointer:hover {
+  cursor: pointer;
+}
+
 /* ---------------BUTTONS-END--------------- */

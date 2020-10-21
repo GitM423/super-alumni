@@ -46,86 +46,85 @@ class Contact extends React.Component {
       email: this.state.email,
       phoneNumber: this.state.phoneNumber,
       message: this.state.message,
-    })
+    });
     window.location.reload(false);
   }
 
   render() {
     return (
-      <div>
-        <main id="contact">
-          <article>
-            <h1>
-              Hi, wie können wir dir <span className="stroke">helfen?</span>{" "}
-            </h1>
-            <p>
-              An diesen Zeiten erreichst du uns am besten an folgenden tagen und
-              Zeiten:
-            </p>
-            <div>
-              <p>Montag - Freitag</p>
-              <p>09:00 - 17:00 Uhr</p>
-            </div>
-            <p>
-              Unser Campus befindet sich im Super7000 Coworking Space – der
-              Mutter aller Coworking Spaces. Die genau Adresse lautet:
-            </p>
-            <div>
-              <p>Ratherstr. 25 </p>
-              <p>40476 Düsseldorf</p>
-            </div>
-          </article>
+      <main id="contact">
+        <article>
+          <h1>
+            Hi, wie können wir dir <span className="stroke">helfen?</span>{" "}
+          </h1>
+          <p>
+            An diesen Zeiten erreichst du uns am besten an folgenden tagen und
+            Zeiten:
+          </p>
+          <div>
+            <p>Montag - Freitag</p>
+            <p>09:00 - 17:00 Uhr</p>
+          </div>
+          <p>
+            Unser Campus befindet sich im Super7000 Coworking Space – der Mutter
+            aller Coworking Spaces. Die genau Adresse lautet:
+          </p>
+          <div>
+            <p>Ratherstr. 25 </p>
+            <p>40476 Düsseldorf</p>
+          </div>
+        </article>
 
-          <form onSubmit={this.onSubmitForm}>
-            <fieldset>
-              <input
-                value={this.state.firstName}
-                type="text"
-                placeholder="Vorname*"
-                onChange={this.onChangeFirstName}
-              ></input>
-              <input
-                value={this.state.lastName}
-                type="text"
-                placeholder="Nachname*"
-                onChange={this.onChangeLastName}
-              ></input>
-              <input
-                value={this.state.email}
-                type="text"
-                placeholder="Email*"
-                onChange={this.onChangeEmail}
-              ></input>
-              <input
-                value={this.state.phoneNumber}
-                type="text"
-                placeholder="Telefonnummer*"
-                onChange={this.onChangePhoneNumber}
-              ></input>
-              <textarea
-                value={this.state.message}
-                cols="30"
-                rows="10"
-                placeholder="Nachricht*"
-                onChange={this.onChangeMessage}
-              ></textarea>
-            </fieldset>
+        <form onSubmit={this.onSubmitForm}>
+          <fieldset>
             <input
-              className="btn contact-btn"
-              type="submit"
-              value="Einsenden"
+              value={this.state.firstName}
+              type="text"
+              placeholder="Vorname*"
+              onChange={this.onChangeFirstName}
             ></input>
-          </form>
-        </main>
+            <input
+              value={this.state.lastName}
+              type="text"
+              placeholder="Nachname*"
+              onChange={this.onChangeLastName}
+            ></input>
+            <input
+              value={this.state.email}
+              type="text"
+              placeholder="Email*"
+              onChange={this.onChangeEmail}
+            ></input>
+            <input
+              value={this.state.phoneNumber}
+              type="text"
+              placeholder="Telefonnummer*"
+              onChange={this.onChangePhoneNumber}
+            ></input>
+            <textarea
+              value={this.state.message}
+              cols="30"
+              rows="10"
+              placeholder="Nachricht*"
+              onChange={this.onChangeMessage}
+            ></textarea>
+          </fieldset>
+          <input
+            className="btn contact-btn"
+            type="submit"
+            value="Einsenden"
+          ></input>
+        </form>
 
         <style jsx>{`
           main {
-            height: 100vh;
+            min-height: 100vh;
             background: black;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3em;
-            padding: 10% 8%;
+            padding: 5% 8%;
+            padding-top: calc(10vh + 5%);
           }
           main article {
             color: #3dd7ac;
@@ -224,7 +223,7 @@ class Contact extends React.Component {
             }
           }
         `}</style>
-      </div>
+      </main>
     );
   }
 }

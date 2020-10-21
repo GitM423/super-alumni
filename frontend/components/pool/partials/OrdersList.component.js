@@ -35,6 +35,7 @@ class OrdersList extends Component {
           !order.workingHours.includes(activeTag) &&
           !order.field.includes(activeTag) &&
           !order.skills.includes(activeTag) &&
+          !alumni.experience.includes(activeTag) &&
           this.props.activeFilterTags != []
         ) {
           check = false;

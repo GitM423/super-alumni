@@ -8,7 +8,7 @@ import axios from "axios";
 import PoolComponent from "../components/Pool.component";
 import HeaderComponent from "../components/essentials/Header.component";
 
-const Pool = () => {
+const Pool = (props) => {
   return (
     <Layout>
       <HeaderComponent />
@@ -36,7 +36,6 @@ Pool.getInitialProps = async (ctx) => {
       });
       ctx.res.end();
     }
-    return {};
   }
 };
 

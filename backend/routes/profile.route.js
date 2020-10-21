@@ -1,6 +1,18 @@
 const router = require("express").Router();
 let Profile = require("../models/user.model");
 
+router.route("/updateType").post((req, res) => {
+  console.log(req.body);
+  Profile.update(
+    { _id: req.body.userId },
+    {
+      $set: {
+        profileType: req.body.profileType,
+      },
+    }
+  ).then(res.json({ msg: "ProfileType Updated" }));
+});
+
 // GET single Profile
 router.route("/:id").get((req, res) => {
   Profile.findById(req.params.id).then((result) => {

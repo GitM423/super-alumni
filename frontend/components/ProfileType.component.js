@@ -2,39 +2,43 @@ import React, { Component } from "react";
 
 import axios from "axios";
 
-class Profile extends Component {
+import { withRouter } from "next/router";
+
+class ProfileType extends Component {
   constructor(props) {
     super(props);
     this.handleProfileSelectionType = this.handleProfileSelectionType.bind(
       this
     );
-
-    this.state = {
-      // profileOption: props.profileOption,
-      profileType: "",
-      userId: props.userId,
-    };
+    this.setTypeDeveloper = this.setTypeDeveloper.bind(this);
+    this.setTypeClient = this.setTypeClient.bind(this);
   }
 
   handleProfileSelectionType(profileType) {
+    console.log(profileType);
+
     const data = {
       userId: this.props.userId,
       profileType: profileType,
     };
     axios
-      .post("http://localhost:5000/api/profile/updateType", data)
+      .post("http://localhost:5000/api/profiles/updateType", data)
       .then((response) => {
-        console.log(response.msg);
-        this.props.router.push(`/profile/${this.props.userId}`);
+        console.log(response.data.msg);
+        this.props.router.push(`/profile/edit/${this.props.userId}`);
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  // handleEdit() {
-  //   this.setState({ profileOption: "edit" });
-  // }
+  setTypeDeveloper() {
+    this.handleProfileSelectionType("developer");
+  }
+
+  setTypeClient() {
+    this.handleProfileSelectionType("client");
+  }
 
   render() {
     return (
@@ -42,18 +46,12 @@ class Profile extends Component {
         <main>
           <div className="vertical-text">Start</div>
           <div className="left">
-            <button
-              onClick={this.handleProfileSelectionType("developer")}
-              className="btn btn-black"
-            >
+            <button onClick={this.setTypeDeveloper} className="btn btn-black">
               Entwickler
             </button>
           </div>
           <div className="right">
-            <button
-              onClick={this.handleProfileSelectionType("client")}
-              className="btn btn-green"
-            >
+            <button onClick={this.setTypeClient} className="btn btn-green">
               Kunde
             </button>
           </div>
@@ -63,7 +61,7 @@ class Profile extends Component {
           {`
             main {
               min-height: 100vh;
-              padding-top: 10vh;
+
               display: grid;
               grid-template-columns: 1fr 1fr;
               font-family: "neue-machina-light";
@@ -107,4 +105,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default withRouter(ProfileType);

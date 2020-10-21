@@ -1,40 +1,56 @@
 import axios from "axios";
 import React from "react";
 import Layout from "../components/Layout.component";
-import ProfileComponent from "../components/Profile.component";
+
 import HeaderComponent from "../components/essentials/Header.component";
+import ProfileTypeComponent from "../components/ProfileType.component";
 
-import { useRouter } from "next/router";
+import { withRouter } from "next/router";
 
-const Profile = ({ profile, profileOption }) => {
-  if (!profile) {
-    profileOption = "selection";
-  } else if (profile && profileOption != "edit") {
-    profileOption = "info";
-  }
-  const router = useRouter();
-  const { pid } = router.query;
-  // console.log(pid);
+const Profile = (props) => {
+  console.log(props.userId);
 
   return (
     <Layout>
       <HeaderComponent />
-      <ProfileComponent profile={profile} profileOption={profileOption} />
+      <ProfileTypeComponent userId={props.userId} />
     </Layout>
   );
 };
 
-Profile.getInitialProps = async ({ query }) => {
+Profile.getInitialProps = async (ctx) => {
   try {
-    const { profileOption } = query;
-    // console.log(query);
-    const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/profiles/cody@cody.cody`
+    let cookieName = "super-session=s%3A";
+    let cookie = ctx.req.headers.cookie.substr(
+      ctx.req.headers.cookie.indexOf(cookieName) + cookieName.length,
+      32
     );
-    return { profile: response.data, profileOption: profileOption };
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/type/${cookie}`
+    );
+    if (
+      response.data.profileType != "developer" &&
+      response.data.profileType != "client"
+    ) {
+      return { userId: response.data.userId };
+    } else {
+      // console.log(error);
+      if (ctx.res) {
+        ctx.res.writeHead(302, {
+          Location: "/pool",
+        });
+        ctx.res.end();
+      }
+    }
   } catch (error) {
-    // console.error(error);
+    // console.log(error);
+    if (ctx.res) {
+      ctx.res.writeHead(302, {
+        Location: "/login",
+      });
+      ctx.res.end();
+    }
   }
 };
 
-export default Profile;
+export default withRouter(Profile);

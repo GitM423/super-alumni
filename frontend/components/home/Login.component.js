@@ -12,12 +12,19 @@ class Login extends Component {
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
 
+    this.onChangeLogin = this.onChangeLogin.bind(this);
+
     this.state = {
       page: "google",
       email: "",
       password: "",
       msg: [],
+      google: true,
     };
+  }
+
+  onChangeLogin() {
+    this.setState({ google: !this.state.google });
   }
 
   onChangeEmail(e) {
@@ -92,7 +99,7 @@ class Login extends Component {
   render() {
     return (
       <main id="login">
-        {this.state.page === "google" ? (
+        {this.state.google ? (
           <div className="grid">
             <section>
               <div>
@@ -112,64 +119,85 @@ class Login extends Component {
                   Sign in with Google
                 </button>
               </Link>
+              <div className="login-switch">
+                <button className="btn btn-black" onClick={this.onChangeLogin}>
+                  Login with Password
+                </button>
+              </div>
             </section>
           </div>
         ) : (
-          <div>
-            <div>
-              {this.state.msg.map((error) => {
-                return <h1> {error.msg}</h1>;
-              })}
-            </div>
-            <form onSubmit={this.onSubmitLogin}>
-              <fieldset>
+          <div className="grid">
+            <section>
+              <div>
+                <h1>Super</h1>
+                <h1>Alumni</h1>
+              </div>
+            </section>
+            <section>
+              <div>
+                {this.state.msg.map((error) => {
+                  return <h1> {error.msg}</h1>;
+                })}
+              </div>
+              <form onSubmit={this.onSubmitLogin}>
+                <fieldset>
+                  <input
+                    value={this.state.email}
+                    type="email"
+                    placeholder="Email*"
+                    onChange={this.onChangeEmail}
+                  ></input>
+                  <input
+                    value={this.state.password}
+                    type="password"
+                    placeholder="Password*"
+                    onChange={this.onChangePassword}
+                  ></input>
+                </fieldset>
                 <input
-                  value={this.state.email}
-                  type="text"
-                  placeholder="Email*"
-                  onChange={this.onChangeEmail}
+                  className="btn btn-black"
+                  type="submit"
+                  value="Login"
                 ></input>
-                <input
-                  value={this.state.password}
-                  type="text"
-                  placeholder="Password*"
-                  onChange={this.onChangePassword}
-                ></input>
-              </fieldset>
-              <input
-                className="btn btn-black"
-                type="submit"
-                value="Login"
-              ></input>
-            </form>
-
-            <div>
-              Noch nicht registriert?{" "}
-              <Link href="/register">
-                <a>Zur Registrierung</a>
-              </Link>
-            </div>
+              </form>
+              <div className="login-switch">
+                <button className="btn btn-black" onClick={this.onChangeLogin}>
+                  Google Login
+                </button>
+              </div>
+              <div>
+                Noch nicht registriert?{" "}
+                <Link href="/register">
+                  <a>Zur Registrierung</a>
+                </Link>
+              </div>
+            </section>
           </div>
         )}
 
         <style jsx>{`
-          // form {
-          //   margin: 20%;
-          //   width: 50%;
-          // }
-          // fieldset {
-          //   display: flex;
-          //   flex-direction: column;
-          // }
-          // fieldset input {
-          //   padding: 0.5rem 0.5rem;
-          // }
+          form {
+            margin: 10%;
+            width: 50%;
+          }
+          fieldset {
+            display: flex;
+            flex-direction: column;
+          }
+          fieldset input {
+            padding: 0.5rem 0.5rem;
+          }
+
+          .login-switch {
+            margin: 2rem;
+          }
 
           #login {
             font-family: "neue-machina-light", sans-serif;
           }
           .grid {
-            height: 90vh;
+            min-height: 100vh;
 
             display: grid;
             grid-template-columns: 1fr 1fr;

@@ -6,20 +6,40 @@ class PoolFilters extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      expanded: false,
-    };
+    this.state = {};
   }
 
   render() {
     return (
       <div>
-        <div className="filters-list">
-          <div className="active-filter-tags">
-            {this.props.data.map((tag) => {
-              return <FilterTag tag={tag} status="profile" />;
-            })}
-          </div>
+        <div>
+          {this.props.filtersData.map((filter) => {
+            if (filter._id === this.props.filtersCategory) {
+              return (
+                <div className="filter-category">
+                  {filter.options.map((filterOption) => {
+                    if (this.props.activeFilterTags.includes(filterOption)) {
+                      return (
+                        <FilterTag
+                          tag={filterOption}
+                          toggleFilters={this.props.toggleFilters}
+                          status="active"
+                        />
+                      );
+                    } else {
+                      return (
+                        <FilterTag
+                          tag={filterOption}
+                          toggleFilters={this.props.toggleFilters}
+                          status="inactive"
+                        />
+                      );
+                    }
+                  })}
+                </div>
+              );
+            }
+          })}
         </div>
 
         <style jsx>{`
@@ -28,7 +48,7 @@ class PoolFilters extends Component {
             padding-bottom: 0.2em;
           }
           .filters-list {
-            padding: 1rem 0;
+            padding: 2rem 0;
           }
           .active-filter-tags {
           }

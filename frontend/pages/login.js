@@ -7,7 +7,7 @@ import LoginComp from "../components/Home/Login.component";
 
 import Header from "../components/essentials/Header.component";
 
-const Pool = () => {
+const Login = () => {
   return (
     <Layout>
       <Header />
@@ -16,4 +16,4 @@ const Pool = () => {
   );
 };
 
-export default withRouter(Pool);
+export default withRouter(Login);
