@@ -29,51 +29,20 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-<<<<<<< HEAD
-=======
     "/login": [
-<<<<<<< HEAD
-=======
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/login.js"
     ],
-    "/next/dist/pages/_error": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/next/dist/pages/_error.js"
-    ],
-    "/pool": [
->>>>>>> aeb96359f77a6620797031a7ac684bdb99640b3a
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/login.js"
-    ],
-<<<<<<< HEAD
     "/pool": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/pool.js"
-=======
->>>>>>> 1fbf7b99f1f07c43a019d0c055338a188815de3e
+    ],
     "/profile/edit/[pid]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/profile/edit/[pid].js"
-<<<<<<< HEAD
-=======
-    ],
-    "/profile/info/[pid]": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/profile/info/[pid].js"
-    ],
-    "/profileT": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/profileT.js"
->>>>>>> aeb96359f77a6620797031a7ac684bdb99640b3a
->>>>>>> 1fbf7b99f1f07c43a019d0c055338a188815de3e
     ]
   },
   "ampFirstPages": []
