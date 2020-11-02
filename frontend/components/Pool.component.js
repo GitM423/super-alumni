@@ -40,7 +40,7 @@ class Pool extends Component {
 
   loadQuery() {
     let queryFilters;
-    if (this.props.router.query.filters != null && "") {
+    if (this.props.router.query.filters != (null && "")) {
       queryFilters = this.props.router.query.filters.split(" ");
     } else {
       queryFilters = [];

@@ -49,7 +49,7 @@ ProfileInfo.getInitialProps = async (ctx) => {
     console.log(error);
     if (ctx.res) {
       ctx.res.writeHead(302, {
-        Location: "/login",
+        Location: "/pool",
       });
       ctx.res.end();
     }

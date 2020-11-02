@@ -8,13 +8,18 @@ import axios from "axios";
 import PoolComponent from "../components/Pool.component";
 import HeaderComponent from "../components/essentials/Header.component";
 
-const Pool = () => {
-  return (
-    <Layout>
-      <HeaderComponent />
-      <PoolComponent />
-    </Layout>
-  );
+const Pool = (props) => {
+  if (props.msg === "Unauthorized") {
+    let reload = window.location.reload(false);
+    return reload;
+  } else {
+    return (
+      <Layout>
+        <HeaderComponent />
+        <PoolComponent />
+      </Layout>
+    );
+  }
 };
 
 Pool.getInitialProps = async (ctx) => {
